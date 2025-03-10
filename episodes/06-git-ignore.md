@@ -17,124 +17,92 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-What if we have files that we do not want Git to track for us,
-like backup files created by our editor
-or intermediate files created during data analysis?
-Let's create a few dummy files:
-
-```bash
-$ mkdir results
-$ touch a.csv b.csv c.csv results/a.out results/b.out
-```
-
-and see what Git says:
-
-```bash
-$ git status
-```
-
-```output
-On branch main
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	a.csv
-	b.csv
-	c.csv
-	results/
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
+RStudio creates a number of files that it uses to keep track of a project.
 
 Putting these files under version control would be a waste of disk space.
 What's worse,
 having them all listed could distract us from changes that actually matter,
 so let's tell Git to ignore them.
 
-We do this by creating a file in the root directory of our project called `.gitignore`:
+In our files list notice that we have a `.gitignore`
+file.
 
-```bash
-$ nano .gitignore
-$ cat .gitignore
-```
+This was automatically created when we setup specified that we wanted to create a project with a Git repository.
 
-```output
-*.csv
-results/
-```
+Let's take a look at the file:
 
-These patterns tell Git to ignore any file whose name ends in `.csv`
-and everything in the `results` directory.
+![](fig/RStudio_screenshot_gitignore.png){alt='RStudio screenshot showing .gitignore open in the editor pane with the files .Rproj.user, .Rhistory, .RData, and \*.Rproj added to the end'}
+
+These patterns tell Git to ignore some specific files and any file whose name ends in `.Rproj`.
 (If any of these files were already being tracked,
 Git would continue to track them.)
 
-Once we have created this file,
-the output of `git status` is much cleaner:
-
-```bash
-$ git status
-```
-
-```output
-On branch main
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	.gitignore
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-The only thing Git notices now is the newly-created `.gitignore` file.
 You might think we wouldn't want to track it,
 but everyone we're sharing our repository with will probably want to ignore
 the same things that we're ignoring.
 Let's add and commit `.gitignore`:
 
+![](fig/rs_git_commit_ignore.png){alt='RStudio screenshot showing .gitignore commit text'}
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Tip: versioning disposable output
+
+Generally you do not want to version control disposable output (or read-only
+data). You should modify the `.gitignore` file to tell Git to ignore these
+files and directories.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+As a bonus, using `.gitignore` helps us avoid accidentally adding files to the repository that we don't want to track.
+
+It is likely that we will generate a range of plots during our analysis that we may not want to track. We can expand our `.gitignore` to ignore any `.png` files and commit our changes.
+
+![](fig/rs_git_expanded_ignore.png){alt='RStudio screenshot showing that the expansion of .gitignore to ignore .png files.'}
+
+I have added a `.png` file to the `amr-data-dictionary` directory. Notice that it does not appear in our Git tab files list.
+
+![](fig/rs_git_ignored_png.png){alt='RStudio screenshot showing that the .png file has been ignored.'}
+
+We can try to add the file via the `Terminal`, Git will let us know that we have chosen not to track the file:
+
 ```bash
-$ git add .gitignore
-$ git commit -m "Ignore data files and the results folder"
-$ git status
+git add phd101212s.png
 ```
-
-```output
-On branch main
-nothing to commit, working tree clean
-```
-
-As a bonus, using `.gitignore` helps us avoid accidentally adding files to the repository that we don't want to track:
-
-```bash
-$ git add a.csv
-```
-
 ```output
 The following paths are ignored by one of your .gitignore files:
-a.csv
-Use -f if you really want to add them.
+phd101212s.png
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+```
+You will notice from the output that it is possible to bypass the `.gitignore` file but it is not generally recommended.
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge
+
+1. Create a new directory within your project called `graphs`.
+2. Modify the `.gitignore` so that the `graphs` directory is not version controlled.
+
+:::::::::::::::  solution
+
+## Solution to Challenge
+
+This can be done in Rstudio:
+
+```r
+dir.create("./graphs")
 ```
 
-If we really want to override our ignore settings,
-we can use `git add -f` to force Git to add something. For example,
-`git add -f a.csv`.
-We can also always see the status of ignored files if we want:
+Then open up the `.gitignore` file from the right-hand panel of Rstudio and add
+`graphs/` to the list of files to ignore.
 
-```bash
-$ git status --ignored
-```
+:::::::::::::::::::::::::
 
-```output
-On branch main
-Ignored files:
- (use "git add -f <file>..." to include in what will be committed)
-
-        a.csv
-        b.csv
-        c.csv
-        results/
-
-nothing to commit, working tree clean
-```
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -143,27 +111,27 @@ nothing to commit, working tree clean
 Given a directory structure that looks like:
 
 ```bash
-results/data
-results/plots
+analysis/data
+analysis/plots
 ```
 
-How would you ignore only `results/plots` and not `results/data`?
+How would you ignore only `analysis/plots` and not `analysis/data`?
 
 :::::::::::::::  solution
 
 ## Solution
 
 If you only want to ignore the contents of
-`results/plots`, you can change your `.gitignore` to ignore
+`analysis/plots`, you can change your `.gitignore` to ignore
 only the `/plots/` subfolder by adding the following line to
 your .gitignore:
 
 ```output
-results/plots/
+analysis/plots/
 ```
 
-This line will ensure only the contents of `results/plots` is ignored, and
-not the contents of `results/data`.
+This line will ensure only the contents of `analysis/plots` is ignored, and
+not the contents of `analysis/data`.
 
 As with most programming issues, there
 are a few alternative ways that one may ensure this ignore rule is followed.
@@ -182,8 +150,8 @@ Further, the discussion page has more detail on ignore rules.
 
 ## Including Specific Files
 
-How would you ignore all `.csv` files in your root directory except for
-`final.csv`?
+How would you ignore all `.png` files in your root directory except for
+`final.png`?
 Hint: Find out what `!` (the exclamation point operator) does
 
 :::::::::::::::  solution
@@ -193,15 +161,15 @@ Hint: Find out what `!` (the exclamation point operator) does
 You would add the following two lines to your .gitignore:
 
 ```output
-*.csv           # ignore all data files
-!final.csv      # except final.csv
+*.png           # ignore all png files
+!final.png      # except final.png
 ```
 
 The exclamation point operator will include a previously excluded entry.
 
-Note also that because you've previously committed `.csv` files in this
+Note also that because you've previously committed `.png` files in this
 lesson they will not be ignored with this new rule. Only future additions
-of `.csv` files added to the root directory will be ignored.
+of `.png` files added to the root directory will be ignored.
 
 
 
@@ -209,42 +177,7 @@ of `.csv` files added to the root directory will be ignored.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Ignoring Nested Files: Variation
-
-Given a directory structure that looks similar to the earlier Nested Files
-exercise, but with a slightly different directory structure:
-
-```bash
-results/data
-results/images
-results/plots
-results/analysis
-```
-
-How would you ignore all of the contents in the results folder, but not `results/data`?
-
-Hint: think a bit about how you created an exception with the `!` operator
-before.
-
-:::::::::::::::  solution
-
-## Solution
-
-If you want to ignore the contents of
-`results/` but not those of `results/data/`, you can change your `.gitignore` to ignore
-the contents of results folder, but create an exception for the contents of the
-`results/data` subfolder. Your .gitignore would look like this:
-
-```output
-results/*               # ignore everything in results folder
-!results/data/          # do not ignore results/data/ contents
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -253,23 +186,23 @@ results/*               # ignore everything in results folder
 Assuming you have an empty .gitignore file, and given a directory structure that looks like:
 
 ```bash
-results/data/position/gps/a.csv
-results/data/position/gps/b.csv
-results/data/position/gps/c.csv
-results/data/position/gps/info.txt
-results/plots
+receipts/data/market_position/gps/a.dat
+receipts/data/market_position/gps/b.dat
+receipts/data/market_position/gps/c.dat
+receipts/data/market_position/gps/info.txt
+receipts/plots
 ```
 
-What's the shortest `.gitignore` rule you could write to ignore all `.csv`
-files in `result/data/position/gps`? Do not ignore the `info.txt`.
+What's the shortest `.gitignore` rule you could write to ignore all `.dat`
+files in `result/data/market_position/gps`? Do not ignore the `info.txt`.
 
 :::::::::::::::  solution
 
 ## Solution
 
-Appending `results/data/position/gps/*.csv` will match every file in `results/data/position/gps`
-that ends with `.csv`.
-The file `results/data/position/gps/info.txt` will not be ignored.
+Appending `receipts/data/market_position/gps/*.dat` will match every file in `receipts/data/market_position/gps`
+that ends with `.dat`.
+The file `receipts/data/market_position/gps/info.txt` will not be ignored.
 
 
 
