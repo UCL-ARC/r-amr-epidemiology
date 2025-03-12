@@ -417,9 +417,6 @@ t.test(height.cm. ~ gender.M., data = hgtwgt_survey)$parameter
 
 Notice that the summary()** of the test contains more data than is output by default.
 
-
-Write a paragraph in markdown format reporting this test result including the t-statistic, the degrees of freedom, the confidence interval and the p-value to 4 places.  To do this include your r code **inline** with your text, rather than in an R code chunk.
-
 ### t-test result
 
 Testing supported the rejection of the null hypothesis that there is no difference between the height of males and females in this data set (**t**=-0.4514, **df**= 905.1175,

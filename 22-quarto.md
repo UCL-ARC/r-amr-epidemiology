@@ -1,7 +1,7 @@
 ---
 title: Producing Reports With Quarto
 teaching: 60
-exercises: 15
+exercises: 60
 source: Rmd
 ---
 
@@ -647,6 +647,24 @@ button in the top right corner of your R Markdown document.
 - [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
 - [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 - [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
+
+
+:::::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge: Quarto presentation
+
+Using what you have learned about Quarto create a new Quarto Presentation.
+
+Present your findings of key factors influencing antimicrobial resistance, 
+this should include:
+
+- text
+- plots
+
+Make use of embedded code chunks where appropriate.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
