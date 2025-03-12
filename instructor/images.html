@@ -356,7 +356,7 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="22-quarto.html">11. Producing Reports With Quarto</a>
+        <a href="23-statistics.html">11. Basic Statistics: describing, modelling and reporting</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -368,7 +368,7 @@
 <div class="accordion accordion-flush" id="accordionFlush13">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading13">
-        <a href="23-statistics.html">12. Basic Statistics: describing, modelling and reporting</a>
+        <a href="26-log-regression.html">12. Logistic Regression</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -380,7 +380,7 @@
 <div class="accordion accordion-flush" id="accordionFlush14">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading14">
-        <a href="26-log-regression.html">13. Logistic Regression</a>
+        <a href="broom.html">13. Broom</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -392,7 +392,7 @@
 <div class="accordion accordion-flush" id="accordionFlush15">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading15">
-        <a href="24-linear-reg-broom.html">14. Linear regression and Broom</a>
+        <a href="22-quarto.html">14. Producing Reports With Quarto</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -416,7 +416,19 @@
 <div class="accordion accordion-flush" id="accordionFlush17">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading17">
-        <a href="27-wrap-up.html">16. Writing Good Software</a>
+        <a href="25-linreg-diagnostics.html">16. Supplemental - Assumption Diagnostics and Regression Trouble Shooting</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush18">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading18">
+        <a href="27-wrap-up.html">17. Writing Good Software</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -593,7 +605,26 @@ data, for example, removing the <code>continent</code> column.</p>
 <figure><img src="../fig/14-tidyr-fig3.png" alt="Diagram illustrating how pivot longer reorganizes a data frame from a wide to long format" class="figure mx-auto d-block"></figure><hr>
 <h3 id="21-tidyr-figure-4">Figure 4</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Diagram illustrating the long format of the gapminder data’</p>
-<figure><img src="../fig/14-tidyr-fig4.png" alt="Diagram illustrating the long format of the gapminder data" class="figure mx-auto d-block"></figure><hr></section><section id="22-quarto"><h2 class="section-heading"><a href="22-quarto.html">Producing Reports With Quarto</a></h2>
+<figure><img src="../fig/14-tidyr-fig4.png" alt="Diagram illustrating the long format of the gapminder data" class="figure mx-auto d-block"></figure><hr></section><section id="23-statistics"><h2 class="section-heading"><a href="23-statistics.html">Basic Statistics: describing, modelling and reportingDescribing data<a class="anchor" aria-label="anchor" href="#describing-data"></a>Inferential statistics<a class="anchor" aria-label="anchor" href="#inferential-statistics"></a>Regression Modelling<a class="anchor" aria-label="anchor" href="#regression-modelling"></a></a></h2>
+<hr class="half-width">
+<h3 id="23-statistics-figure-1">Figure 1</h3>
+<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="23-statistics-figure-2">Figure 2</h3>
+<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="23-statistics-figure-3">Figure 3</h3>
+<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="23-statistics-figure-4">Figure 4</h3>
+<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-4-2.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="23-statistics-figure-5">Figure 5</h3>
+<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-15-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="26-log-regression"><h2 class="section-heading"><a href="26-log-regression.html">Logistic Regression</a></h2>
+<hr class="half-width">
+<h3 id="26-log-regression-figure-1">Figure 1</h3>
+<p><img src="../fig/26-log-regression-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" class="figure">
+We can also look at where the specimens were processed:</p>
+<hr>
+<h3 id="26-log-regression-figure-2">Figure 2</h3>
+<figure><img src="../fig/26-log-regression-rendered-unnamed-chunk-12-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="broom"><h2 class="section-heading"><a href="broom.html">Broom</a></h2>
+<hr class="half-width"></section><section id="22-quarto"><h2 class="section-heading"><a href="22-quarto.html">Producing Reports With Quarto</a></h2>
 <hr class="half-width">
 <h3 id="22-quarto-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Screenshot of the New Quarto Document dialogue box in RStudio’</p>
@@ -611,30 +642,24 @@ toolbar at the top with basic formatting buttons, similar to what you
 might see in common word processing software programs. You can turn
 visual editing on and off by pressing the <img src="../fig/visual_mode_icon.png" alt="Icon for turning on and off the visual editing mode in RStudio, which looks like a pair of compasses" class="figure">
 button in the top right corner of your R Markdown document.</p>
-<hr></section><section id="23-statistics"><h2 class="section-heading"><a href="23-statistics.html">Basic Statistics: describing, modelling and reportingDescribing data<a class="anchor" aria-label="anchor" href="#describing-data"></a>Inferential statistics<a class="anchor" aria-label="anchor" href="#inferential-statistics"></a>Regression Modelling<a class="anchor" aria-label="anchor" href="#regression-modelling"></a></a></h2>
-<hr class="half-width">
-<h3 id="23-statistics-figure-1">Figure 1</h3>
-<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
-<h3 id="23-statistics-figure-2">Figure 2</h3>
-<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
-<h3 id="23-statistics-figure-3">Figure 3</h3>
-<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
-<h3 id="23-statistics-figure-4">Figure 4</h3>
-<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-4-2.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
-<h3 id="23-statistics-figure-5">Figure 5</h3>
-<figure><img src="../fig/23-statistics-rendered-unnamed-chunk-15-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="26-log-regression"><h2 class="section-heading"><a href="26-log-regression.html">Logistic Regression</a></h2>
-<hr class="half-width">
-<h3 id="26-log-regression-figure-1">Figure 1</h3>
-<p><img src="../fig/26-log-regression-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure">
-We can also look at where the specimens were processed:</p>
-<hr>
-<h3 id="26-log-regression-figure-2">Figure 2</h3>
-<figure><img src="../fig/26-log-regression-rendered-unnamed-chunk-11-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="24-linear-reg-broom"><h2 class="section-heading"><a href="24-linear-reg-broom.html">Linear regression and Broom</a></h2>
-<hr class="half-width"></section><section id="27-sql-r"><h2 class="section-heading"><a href="27-sql-r.html">SQL and R</a></h2>
+<hr></section><section id="27-sql-r"><h2 class="section-heading"><a href="27-sql-r.html">SQL and R</a></h2>
 <hr class="half-width">
 <h3 id="27-sql-r-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Visualisation of different types of SQL join’</p>
-<figure><img src="../fig/joins.png" alt="Visualisation of different types of SQL join" class="figure mx-auto d-block"></figure><hr></section><section id="27-wrap-up"><h2 class="section-heading"><a href="27-wrap-up.html">Writing Good Software</a></h2>
+<figure><img src="../fig/joins.png" alt="Visualisation of different types of SQL join" class="figure mx-auto d-block"></figure><hr></section><section id="25-linreg-diagnostics"><h2 class="section-heading"><a href="25-linreg-diagnostics.html">Supplemental - Assumption Diagnostics and Regression Trouble Shooting</a></h2>
+<hr class="half-width">
+<h3 id="25-linreg-diagnostics-figure-1">Figure 1</h3>
+<figure><img src="../fig/25-linreg-diagnostics-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="25-linreg-diagnostics-figure-2">Figure 2</h3>
+<figure><img src="../fig/25-linreg-diagnostics-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="25-linreg-diagnostics-figure-3">Figure 3</h3>
+<figure><img src="../fig/25-linreg-diagnostics-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="25-linreg-diagnostics-figure-4">Figure 4</h3>
+<figure><img src="../fig/25-linreg-diagnostics-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="25-linreg-diagnostics-figure-5">Figure 5</h3>
+<figure><img src="../fig/25-linreg-diagnostics-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="25-linreg-diagnostics-figure-6">Figure 6</h3>
+<figure><img src="../fig/25-linreg-diagnostics-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="27-wrap-up"><h2 class="section-heading"><a href="27-wrap-up.html">Writing Good Software</a></h2>
 <hr class="half-width"></section>
 </div>
     </main>
@@ -683,8 +708,8 @@ We can also look at where the specimens were processed:</p>
   "url": "https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/images.html",
   "identifier": "https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/images.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2025-03-11",
-  "datePublished": "2025-03-11"
+  "dateModified": "2025-03-12",
+  "datePublished": "2025-03-12"
 }
 
   </script><script>

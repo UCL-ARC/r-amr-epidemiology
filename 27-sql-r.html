@@ -108,11 +108,11 @@
   Introduction to R, databases and reproducibility for AMR Epidemiologists
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 83%" class="percentage">
-    83%
+<aside class="col-md-12 lesson-progress"><div style="width: 75%" class="percentage">
+    75%
   </div>
   <div class="progress software">
-    <div class="progress-bar software" role="progressbar" style="width: 83%" aria-valuenow="83" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar software" role="progressbar" style="width: 75%" aria-valuenow="75" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -286,7 +286,7 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="22-quarto.html">11. Producing Reports With Quarto</a>
+        <a href="23-statistics.html">11. Basic Statistics: describing, modelling and reporting</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -295,7 +295,7 @@
 <div class="accordion accordion-flush" id="accordionFlush13">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading13">
-        <a href="23-statistics.html">12. Basic Statistics: describing, modelling and reporting</a>
+        <a href="26-log-regression.html">12. Logistic Regression</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -304,7 +304,7 @@
 <div class="accordion accordion-flush" id="accordionFlush14">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading14">
-        <a href="26-log-regression.html">13. Logistic Regression</a>
+        <a href="broom.html">13. Broom</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -313,7 +313,7 @@
 <div class="accordion accordion-flush" id="accordionFlush15">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading15">
-        <a href="24-linear-reg-broom.html">14. Linear regression and Broom</a>
+        <a href="22-quarto.html">14. Producing Reports With Quarto</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -349,7 +349,16 @@
 <div class="accordion accordion-flush" id="accordionFlush17">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading17">
-        <a href="27-wrap-up.html">16. Writing Good Software</a>
+        <a href="25-linreg-diagnostics.html">16. Supplemental - Assumption Diagnostics and Regression Trouble Shooting</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush18">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading18">
+        <a href="27-wrap-up.html">17. Writing Good Software</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -397,17 +406,17 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="24-linear-reg-broom.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="27-wrap-up.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="22-quarto.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="25-linreg-diagnostics.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="24-linear-reg-broom.html" rel="prev">
+        <a class="chapter-link" href="22-quarto.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Linear regression
+          Previous: Producing Reports
         </a>
-        <a class="chapter-link float-end" href="27-wrap-up.html" rel="next">
-          Next: Writing Good...
+        <a class="chapter-link float-end" href="25-linreg-diagnostics.html" rel="next">
+          Next: Supplemental -...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -781,7 +790,7 @@ value.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -25925,7 +25934,7 @@ from the ahah table, where ah3h_rnk is below 500 and ah3e_rnk is between
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -26049,7 +26058,7 @@ aggregate functions MAX, MIN, AVG, COUNT, SUM.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -71865,7 +71874,7 @@ by RANK in descending order.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -71911,17 +71920,17 @@ database:</p>
 </div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="24-linear-reg-broom.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="27-wrap-up.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="22-quarto.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="25-linreg-diagnostics.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link" href="24-linear-reg-broom.html" rel="prev">
+        <a class="chapter-link" href="22-quarto.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Linear regression
+          Previous: Producing Reports
         </a>
-        <a class="chapter-link float-end" href="27-wrap-up.html" rel="next">
-          Next: Writing Good...
+        <a class="chapter-link float-end" href="25-linreg-diagnostics.html" rel="next">
+          Next: Supplemental -...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -71968,7 +71977,7 @@ database:</p>
   "identifier": "https://UCL-ARC.github.io/R-AMR-Epidemiology/27-sql-r.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2025-03-11",
-  "datePublished": "2025-03-11"
+  "datePublished": "2025-03-12"
 }
 
   </script><script>
