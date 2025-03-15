@@ -76,6 +76,8 @@ episodes:
   # basic stats
   - 23-statistics.Rmd
   - 26-log-regression.Rmd 
+  - broom.Rmd
+  - 22-quarto.md
  # new content for use within RStudio
   - 01-git-basics.md
   - 02-git-setup.md
@@ -92,11 +94,9 @@ episodes:
   - 11-licensing.md
   - 12-citation.md
   - 13-hosting.md
-  - broom.Rmd
-  - 22-quarto.md
-  - 27-sql-r.Rmd # still to be updated
-  - 25-linreg-diagnostics.Rmd #supplemental file
+  - 27-sql-r.Rmd
   - 27-wrap-up.Rmd
+  - 25-linreg-diagnostics.Rmd #supplemental file
 
 # Information for Learners
 learners:
