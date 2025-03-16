@@ -78,6 +78,8 @@ episodes:
   - 26-log-regression.Rmd 
   - broom.Rmd
   - 22-quarto.md
+  - best-practices-R.Rmd
+  - intro-reproducibility.Rmd
  # new content for use within RStudio
   - 01-git-basics.md
   - 02-git-setup.md
