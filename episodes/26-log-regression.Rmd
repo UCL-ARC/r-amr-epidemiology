@@ -63,7 +63,7 @@ We can see that dates are currently stored as the char data type. We also do not
 
 ```{r}
 # Calculate age (in years) as of their last birthday and add as an additional variable to our data.
-# The %--% and %/% are synax specific to lubridate. 
+# The %--% and %/% are synax specific to lubridate.
 # In the first part we are asking it to find the difference between the two dates.
 # We are then rounding down to the nearest year.
 
@@ -144,20 +144,17 @@ We can also check the linearity of the variable age_years_sd
 logit.use <- log(coamox_logit$fitted.values / (1 - coamox_logit$fitted.values))
 
 # make a small data frame with the logit variable and the age predictor
-linearity.data <- data.frame(logit.use, age = coamox_logit$model$age_years_sd)
+linearity_data <- data.frame(logit.use, age = coamox_logit$model$age_years_sd)
 
 # create a plot with linear and actual relationships shown
-linearPlot <- linearity.data %>%
-  ggplot(aes(x = age, y = logit.use)) +
+ggplot(linearity_data, aes(x = age, y = logit.use)) +
   geom_point(aes(size = "Observation"), color = "blue", alpha = .6) +
-  geom_smooth(se = FALSE, aes(color = "Loess curve")) +
-  geom_smooth(method = lm, se = FALSE, aes(color = "linear")) +
+  geom_smooth(aes(color = "Loess curve"), se = FALSE) +
+  geom_smooth(aes(color = "linear"), method = lm, se = FALSE) +
   theme_minimal(base_size = 14, base_family = "serif") +
   labs(x = "Age in years on sample date", y = "Log-odds of coamox resistance predicted probability") +
   scale_color_manual(name = "Type of fit line", values = c("red", "black")) +
   scale_size_manual(values = 1.5, name = "")
-
-linearPlot
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -194,42 +191,11 @@ As the value of GVIF is lower than 4, it suggests that the assumption of indepen
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
 ### Incorporating a multi-level factor
 
-So far we have considered binary and continuous variable indicators in our model(s).
-Our data set also contains some categorical variables: organism, trst_cd and icd_cd.
-
-We are going to incorporate Trusts (trst_cd) into our model:
-
-```{r}
-# To include reporting for all regions I will include the 0 flag
-coamox_trust_logit <- glm(coamox ~ 0 + age_years_sd + sex_male + trst_cd, data = amrData, family = "binomial")
-summary(coamox_trust_logit)
-```
-It initially seems that a range of Trusts (trst_cd) are significant and most have a negative log-odds of Coamoxiclav resistance.
-
-
-We can use the Wald test to explore the overall effect of trst_cd. We will use the wald.test function of the aod library. The order in which the coefficients are given in the table of coefficients is the same as the order of the terms in the model. This is important because the wald.test function refers to the coefficients by their order in the model. We use the wald.test function. b supplies the coefficients, while Sigma supplies the variance covariance matrix of the error terms, finally Terms tells R which terms in the model are to be tested, in this case, terms 3 to 240, are the terms for the different Trusts as there are 238 unique values for trst_cd.
-
-```{r}
-# model with just the regions added
-wald.test(b = coef(coamox_trust_logit), Sigma = vcov(coamox_trust_logit), Terms = 3:240)
-```
-
-The chi-squared test statistic of 133.4, with 238 degrees of freedom is associated with a p-value of 1.00 indicating that the overall effect of trst_cd is not statistically significant.
-
-::::::::::::::::::::::::::::::::::::::  challenge
-
-### Challenge 2
-
-Update the model you created in Challenge 1 to include either ethnicity or icd_cd as an independent variable.
-What is the log-odds reported and is it statistically significant?
-
-:::::::::::::::  solution
-
-### Challenge 2
-
-If you chose to incorporate imd, this would first need to be converted to a factor
+We are going to incorporate ethnicity into our model. We first need to conver this to a factor, to make sure it is
+interpreted as a categorical variable.
 
 ```{r}
 amrData$ethnicity <- factor(amrData$ethnicity)
@@ -245,54 +211,63 @@ summary(coamox_surg_ethnicity_logit)
 The ethnicity category Asian, Asian British or Asian Welsh has been used as the reference group.
 Estimates for the other categories are reported in relation to this group.
 
-:::::::::::::::::::::::::
+We can use the Wald test to explore the overall effect of ethnicity. We will use the `wald.test` function of the `aod` library. The order in which the coefficients are given in the table of coefficients is the same as the order of the terms in the model. This is important because the `wald.test` function refers to the coefficients by their order in the model. 
+`b` supplies the coefficients, while `Sigma` supplies the variance covariance matrix of the error terms, finally `Terms` tells R which terms in the model are to be tested, in this case, terms 5 to 8, which correspond to the different ehtnicities.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+```{r}
+wald.test(b = coef(coamox_surg_ethnicity_logit), Sigma = vcov(coamox_surg_ethnicity_logit), Terms = 5:8)
+```
+
+The chi-squared test statistic of 3, with 4 degrees of freedom is associated with a p-value of 0.56 indicating that the overall effect of ethnicity is not statistically significant.
+
 
 ## Reporting the Logistic Regression Results
 
-For our model coamox_trust_logit there are various things that we can report, and different functions and packages that can be used.
+For our model `coamox_surg_ethnicity_logit` there are various things that we can report, and different functions and packages that can be used.
 
-We can report the CIs using profiled log-likelihood or using standard errors for our model.
+We can report the confidence intervals using profiled log-likelihood or using standard errors for our model.
+
 ```{r}
 # CIs using log-likelihood
-confint(coamox_trust_logit)
+confint(coamox_surg_ethnicity_logit)
 
 ## CIs using standard errors
-confint.default(coamox_trust_logit)
+confint.default(coamox_surg_ethnicity_logit)
 ```
 
 Alternatively we may be interested in the odds-ratio:
+
 ```{r}
 ## odds ratios only
-exp(coef(coamox_trust_logit))
+exp(coef(coamox_surg_ethnicity_logit))
 
 # including confidence intervals
-exp(cbind(OR = coef(coamox_trust_logit), confint(coamox_trust_logit)))
+exp(cbind(OR = coef(coamox_surg_ethnicity_logit), confint(coamox_surg_ethnicity_logit)))
 ```
 These can also be presented using broom:
+
 ```{r}
 # as Log-Odds
-tidy(coamox_trust_logit)
+tidy(coamox_surg_ethnicity_logit)
 
 # as ORs
-tidy(coamox_trust_logit, exp = TRUE)
+tidy(coamox_surg_ethnicity_logit, exp = TRUE)
 ```
 
 The odd.n.ends package provides a wide range of reporting tools
 
 ```{r}
 # Odds ratios and confidence intervals
-coamox_trust_logitOR <- odds.n.ends::odds.n.ends(coamox_trust_logit)
-coamox_trust_logitCI <- coamox_trust_logitOR$`Predictor odds ratios and 95% CI`
-coamox_trust_logitCI
+coamox_surg_ethnicity_logitOR <- odds.n.ends::odds.n.ends(coamox_surg_ethnicity_logit)
+coamox_surg_ethnicity_logitCI <- coamox_surg_ethnicity_logitOR$`Predictor odds ratios and 95% CI`
+coamox_surg_ethnicity_logitCI
 
 # model fit
-modfit <- coamox_trust_logitOR$`Count R-squared (model fit): percent correctly predicted`
+modfit <- coamox_surg_ethnicity_logitOR$`Count R-squared (model fit): percent correctly predicted`
 modfit
 
 # Other model statistics
-odds.n.ends::odds.n.ends(coamox_trust_logit)
+odds.n.ends::odds.n.ends(coamox_surg_ethnicity_logit)
 ```
 As you can see we have a range of probabilities, odds ratios and log-odds. We need to be aware of which we are referring to.
 One way is to look at the range of the estimates. Probabilities always have a range from zero to 1. Logit units generally range from about -4 to +4, with zero meaning an equal probability of no event or the event outcome occurring. Odds ratios can range from very small (but positive) numbers to very large positive numbers.
