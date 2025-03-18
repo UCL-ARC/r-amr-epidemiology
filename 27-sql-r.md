@@ -146,7 +146,7 @@ epiDB
 
 ``` output
 <SQLiteConnection>
-  Path: epiDB.sqlite
+  Path: /home/runner/work/r-amr-epidemiology/r-amr-epidemiology/site/built/epiDB.sqlite
   Extensions: TRUE
 ```
 
@@ -157,9 +157,29 @@ and start adding our tables:
 #create tables
 
 dbWriteTable(epiDB, "trusts", trusts)
-dbWriteTable(epiDB, "icd10", icd10)
-dbWriteTable(epiDB, "amrTests", amrTests)
+```
 
+``` error
+Error: Table trusts exists in database, and both overwrite and append are FALSE
+```
+
+``` r
+dbWriteTable(epiDB, "icd10", icd10)
+```
+
+``` error
+Error: Table icd10 exists in database, and both overwrite and append are FALSE
+```
+
+``` r
+dbWriteTable(epiDB, "amrTests", amrTests)
+```
+
+``` error
+Error: Table amrTests exists in database, and both overwrite and append are FALSE
+```
+
+``` r
 dbListTables(epiDB)
 ```
 
