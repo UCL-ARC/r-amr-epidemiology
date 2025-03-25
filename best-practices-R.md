@@ -1,0 +1,213 @@
+---
+title: Best Practices for Writing R Code
+teaching: 25
+exercises: 15
+source: Rmd
+---
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Describe changes made to code for future reference.
+- Understand the importance about requirements and dependencies for your code.
+- To identify and segregate distinct components in your code using # or #-.
+- Additional best practice recommendations.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- How can I write R code that other people can understand and use?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### Keep track of who wrote your code and its intended purpose
+
+Starting your code with an annotated description of what the code does when it is run will help you when you have to look at or change it in the future. Just one or two lines at the beginning of the file can save you or someone else a lot of time and effort when trying to understand what a particular script does.
+
+
+``` r
+# This is code to replicate the analyses and figures from my 2014 Science
+# paper. Code developed by Sarah Supp, Tracy Teal, and Jon Borelli
+```
+
+Also consider version-controlling your code as for example taught by
+[Software Carpentry's `git-novice` lessons][swc-lesson-git].
+Frequent commits with explanatory, synoptic commit messages are an elegant way
+to comment code. [RStudio enables this with a Git integration][rstudio-git].
+
+### Be explicit about the requirements and dependencies of your code
+
+Loading all of the packages that will be necessary to run your code (using `library`) is a nice way of indicating which packages are necessary to run your code. It can be frustrating to make it two-thirds of the way through a long-running script only to find out that a dependency hasn't been installed.
+
+
+``` r
+library(ggplot2)
+library(reshape)
+library(vegan)
+```
+
+Another way you can be explicit about the requirements of your code and improve it's reproducibility is to limit the "hard-coding" of the input and output files for your script. If your code will read in data from a file, define a variable early in your code that stores the path to that file. For example
+
+
+``` r
+input_file <- "data/data.csv" 
+output_file <- "data/results.csv"
+
+# read input
+input_data <- read.csv(input_file)
+# get number of samples in data
+sample_number <- nrow(input_data)
+# generate results
+results <- some_other_function(input_file, sample_number)
+# write results
+write.table(results, output_file)
+```
+
+is preferable to
+
+
+``` r
+# check
+input_data <- read.csv("data/data.csv")
+# get number of samples in data
+sample_number <- nrow(input_data)
+# generate results
+results <- some_other_function("data/data.csv", sample_number)
+# write results
+write.table("data/results.csv", output_file)
+```
+
+It is also worth considering what the working directory is. If the working directory must change, it is best to do that at the beginning of the script.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Environments
+
+Sometimes there are specify versions of packages that you want to specify for analysis.
+This can help aid reproducibility, which we will discuss in the next episode.
+
+It is possible to create and manage specific coding environments, this may be through a specific tool
+or a combination of tools.
+
+The package [`renv`](https://rstudio.github.io/renv/articles/renv.html) an keep track of and specify package version, but not the `R` versions. In addition, container tools such as `Docker` may be needed
+to retain specify operating system library and settings.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### Identify and segregate distinct components in your code
+
+It's easy to annotate and mark your code using `#` or `#-` to set off sections of your code and to make finding specific parts of your code easier. For example, it's often helpful when writing code to separate the function definitions. If you create only one or a few custom functions in your script, put them toward the top of your code. If you have written many functions, put them all in their own .R file and then `source` those files. `source` will define all of these functions so that your code can make use of them as needed.
+
+
+``` r
+source("my_genius_fxns.R")
+```
+
+### Other ideas
+
+1. Use a consistent style within your code. For example, name all matrices something ending in `_mat`. Consistency makes code easier to read and problems easier to spot.
+
+2. Keep your code in bite-sized chunks. If a single function or loop gets too long, consider looking for ways to break it into smaller pieces.
+
+3. Don't repeat yourself--automate! If you are repeating the same code over and over, use a loop or a function to repeat that code for you. Needless repetition doesn't just waste time--it also increases the likelihood you'll make a costly mistake!
+
+4. Keep all of your source files for a [project in the same directory][rstudio-project], then use relative paths as necessary to access them. For example, use
+
+
+``` r
+dat <- read.csv(file = "files/dataset-2013-01.csv", header = TRUE)
+```
+
+rather than:
+
+
+``` r
+dat <- read.csv(file = "/Users/Karthik/Documents/sannic-project/files/dataset-2013-01.csv", header = TRUE)
+```
+
+5. R can run into memory issues. It is a common problem to run out of memory after running R scripts for a long time. To inspect the objects in your current R environment, you can list the objects, search current packages, and remove objects that are currently not in use. A good practice when running long lines of computationally intensive code is to remove temporary objects after they have served their purpose. However, sometimes, R will not clean up unused memory for a while after you delete objects. You can force R to tidy up its memory by using `gc()`.
+
+
+``` r
+# Sample dataset of 1000 rows
+interim_object <- data.frame(rep(1:100, 10),
+                             rep(101:200, 10),
+                             rep(201:300, 10))
+object.size(interim_object) # Reports the memory size allocated to the object
+rm("interim_object") # Removes only the object itself and not necessarily the memory allotted to it
+gc() # Force R to release memory it is no longer using
+ls() # Lists all the objects in your current workspace
+rm(list = ls()) # If you want to delete all the objects in the workspace and start with a clean slate
+```
+
+
+6. [Don't save a session history][dc-rstudio] (the default option in R, when it asks if you want an `RData` file). Instead, start in a clean environment so that older objects don't remain in your environment any longer than they need to. If that happens, it can lead to unexpected results.
+
+7. Wherever possible, [keep track of `sessionInfo()` somewhere][sessionInfo] in your project folder. Session information is invaluable because it captures all of the packages used in the current project. If a newer version of a package changes the way a function behaves, you can always go back and reinstall the version that worked (Note: At least on CRAN, all older versions of packages are permanently archived).
+
+8. Collaborate. Grab a buddy and practice "code review". Review is used for preparing experiments and manuscripts; why not use it for code as well? Our code is also a major scientific achievement and the product of lots of hard work! Reviews are built into [GitHub's Pull request feature][gh-pr]
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Style Guides
+
+1.Review the [Tidyverse style guide](https://style.tidyverse.org/), what are your thoughts?
+2.What other R style guides can you find? Are there any contradictions?
+3.Does your dept or team have a style guide?
+4.What are the benefits of conforming to a style guide?
+
+Add your responses to the Menti: [R Style Guides](https://www.menti.com/al1and63y795)
+
+Your responses will be discussed with the group.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  callout
+
+## Formatting tools
+
+There are some R packages that will help you with consistent formatting of 
+your R code, these are often referred to as linters.
+
+The `tidyverse` style guides recommends two such packages `styler` and `lintr`.
+
+These types of tools can help:
+- identify syntax errors
+- maintain code standards adherence
+- identify potential problems
+- and perform security checks
+
+However, not all linters offer all benefits. 
+You would need to choose the most appropriate for your needs.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+[swc-lesson-git]: https://swcarpentry.github.io/git-novice/
+[rstudio-git]: https://support.posit.co/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN
+[rstudio-project]: https://posit.co/resources/videos/programming-part-1-writing-code-in-rstudio/
+[dc-rstudio]: https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html#getting-set-up
+[sessionInfo]: https://stackoverflow.com/a/21967272/4341322
+[gh-pr]: https://github.com/skills/review-pull-requests
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Start each program with a description of what it does.
+- Then load all required packages.
+- Consider what working directory you are in when sourcing a script.
+- Use comments to mark off sections of code.
+- Put function definitions at the top of your file, or in a separate file if there are many.
+- Name and style code consistently.
+- Break code into small, discrete pieces.
+- Factor out common operations rather than repeating them.
+- Keep all of the source files for a project in one directory and use relative paths to access them.
+- Keep track of the memory used by your program.
+- Always start with a clean environment instead of saving the workspace.
+- Keep track of session information in your project folder.
+- Have someone else review your code.
+- Use version control.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+<img src="fig/best-practices-R-rendered-pressure-1.png" style="display: block; margin: auto;" />
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
