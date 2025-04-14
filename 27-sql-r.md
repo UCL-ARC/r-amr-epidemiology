@@ -44811,26 +44811,27 @@ For example, what if we wanted to calculate a new column called resistance_count
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT id, trst_cd, 
-            coamox + cipro + gentam as resistance_count
-            FROM amrTests 
-            ORDER BY resistance_count DESC
-            LIMIT 10
-            ")
+dbGetQuery(epiDB, "SELECT trst_cd, 
+           SUM(coamox + cipro + gentam) as resistance_count
+           FROM amrTests
+           GROUP BY trst_cd 
+           ORDER BY resistance_count DESC
+           LIMIT 10
+           ")
 ```
 
 ``` output
-    id trst_cd resistance_count
-1   24     RGR                2
-2   64     RDU                2
-3   71     RWK                2
-4  140     RAL                2
-5  191     RTK                2
-6  212     RTX                2
-7  217     RTX                2
-8  220     RYD                2
-9  251     RWF                2
-10 263     RTG                2
+   trst_cd resistance_count
+1      RTX                8
+2      RK9                6
+3      RGD                6
+4      RA3                6
+5      RVV                5
+6      RTP                5
+7      RTG                5
+8      RGN                5
+9      RDU                5
+10     RA2                5
 ```
 
 In this example we used the calculation and `AS` to represent that the new column is different from the original SQL table data.
