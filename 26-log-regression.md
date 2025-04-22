@@ -128,7 +128,7 @@ R0A R1A R1C R1D R1E R1F R1G R1H R1J R1K R1L RA2 RA3 RA4 RA7 RA9 RAE RAJ RAL RAN
   2   7   7   2   4   2   2   3   7   3   4   9   9   4   3   1   2   4   4   1 
 RAP RAS RAT RAX RBA 
   2   1   3   1   5 
- [ reached getOption("max.print") -- omitted 213 entries ]
+ [ reached 'max' / getOption("max.print") -- omitted 213 entries ]
 ```
 
 and for which organism:
@@ -368,7 +368,7 @@ age_years_sd                                                       <2e-16 ***
 sex_male                                                            0.203    
 had_surgery_past_yr                                                 0.650    
 ethnicityBlack, Black British, Black Welsh, Caribbean or African    0.939    
- [ reached getOption("max.print") -- omitted 3 rows ]
+ [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 

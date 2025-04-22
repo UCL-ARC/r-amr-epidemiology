@@ -478,7 +478,7 @@ $`hgtwgt_survey$age.yrs.`
 65-74-55-64  0.3956049  -3.602201  4.393410 0.9999892
 75 +-55-64  -0.7236381  -9.398170  7.950894 0.9999967
 75+-55-64   -8.4422503 -44.244518 27.360017 0.9965272
- [ reached getOption("max.print") -- omitted 3 rows ]
+ [ reached 'max' / getOption("max.print") -- omitted 3 rows ]
 ```
 
 # Regression Modelling
