@@ -385,12 +385,13 @@ For example, what if we wanted to calculate a new column called resistance_count
 
 ```{r}
 
-dbGetQuery (epiDB, "SELECT id, trst_cd, 
-            coamox + cipro + gentam as resistance_count
-            FROM amrTests 
-            ORDER BY resistance_count DESC
-            LIMIT 10
-            ")
+dbGetQuery(epiDB, "SELECT trst_cd, 
+           SUM(coamox + cipro + gentam) as resistance_count
+           FROM amrTests
+           GROUP BY trst_cd 
+           ORDER BY resistance_count DESC
+           LIMIT 10
+           ")
 
 ```
 
