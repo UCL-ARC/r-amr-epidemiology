@@ -44732,7 +44732,7 @@ Error in h(simpleError(msg, call)): error in evaluating the argument 'conn' in s
 :::::::::::::::::::::::::::::::::::::::  challenge
 ## Challenge 3
 
-Using the imd table, write a query using an aggregate function that returns the number of participants that are co-amoxiclav resistant per trust, sorted by number of resistant participants in descending order. Which trust has the most patients who are resistant? (Hint to choosing which aggregate function to use - it is one of the common aggregate functions MAX, MIN, AVG, COUNT, SUM.)
+Using the amrTests table, write a query using an aggregate function that returns the number of participants that are co-amoxiclav resistant per trust, sorted by number of resistant participants in descending order. Which trust has the most patients who are resistant? (Hint to choosing which aggregate function to use - it is one of the common aggregate functions MAX, MIN, AVG, COUNT, SUM.)
 
 :::::::::::::::  solution
 ## Solution
