@@ -108,7 +108,7 @@ They're mostly needed if you want to include a colon in the title.
 RStudio creates the document with some example text to get you
 started. Note below that there are chunks like
 
-````{verbatim}
+````
 ```{r}
 1 + 1
 ```
@@ -273,7 +273,7 @@ figures will be inserted in the final document.
 
 The main code chunks look like this:
 
-````{verbatim}
+````
 ```{r}
 #| label: load_data
 gapminder <- read.csv("gapminder.csv")
@@ -293,7 +293,7 @@ or <kbd>Cmd</kbd>\+<kbd>Option</kbd>\+<kbd>I</kbd> on Mac.
 ### Code chunk options in R Markdown
 In R Markdown, you add chunk labels by including them within the <code>\`\`\`{r}</code> line like so:
 
-````{verbatim}
+````
 ```{r label_data}
 gapminder <- read.csv("gapminder.csv")
 ```
@@ -314,21 +314,21 @@ Add code chunks to:
 
 ## Solution to Challenge 2
 
-````{verbatim}
+````
 ```{r}
 #| label: libraries
 library(ggplot2)
 ```
 ````
 
-````{verbatim}
+````
 ```{r}
 #| label: load-gapminder-data
 gapminder <- read.csv("gapminder.csv")
 ```
 ````
 
-````{verbatim}
+````
 ```{r}
 #| label: make-plot
 plot(lifeExp ~ year, data = gapminder)
@@ -367,7 +367,7 @@ treated. Here are some examples:
 
 So you might write:
 
-````{verbatim}
+````
 ```{r}
 #| label: load_libraries
 #| echo: false
@@ -413,7 +413,7 @@ code.
 
 ## Solution to Challenge 3
 
-````{verbatim}
+````
 ```{r}
 #| label: faitful-plot
 #| echo: false
@@ -454,7 +454,7 @@ Try out a bit of in-line R code.
 
 Here's some inline code to determine that 2 + 2 = `r 2+2`:
 
-```{verbatim}
+```
 Here's some inline code to determine that 2 + 2 = `r 2+2`:
 ```
 :::::::::::::::::::::::::
@@ -506,7 +506,7 @@ We can then reference this parameter anywhere in the R code in our report by acc
 `params` object. To calculate the life expectancy for just the country defined by the `params`,
 we can do:
 
-````{verbatim}
+````
 ```{r}
 library(tidyverse)
 library(gapminder)
@@ -524,7 +524,7 @@ The last line in the code chunk above uses the `params` object to filter the `ga
 Note that we can also `params` in inline R code snippets. So we can generate a heading that will
 change based on the country parameter:
 
-````{verbatim}
+````
 ## Life Expectancy in `r params$country`
 
 ```{r}
