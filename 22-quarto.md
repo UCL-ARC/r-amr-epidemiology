@@ -242,7 +242,7 @@ Then click the 'Render' button on the toolbar to generate an html document (webp
 You can make a hyperlink like this:
 `[Carpentries Home Page](https://carpentries.org/)`.
 
-You can include an image file like this: `![The Carpentries Logo](https://carpentries.org/assets/img/TheCarpentries.svg)`
+You can include an image file like this: `![The Carpentries Logo](https://github.com/carpentries/logo/blob/main/TheCarpentries.png)`
 
 You can do subscripts (e.g., F~2~) with `F~2~` and superscripts (e.g.,
 F^2^) with `F^2^`.
