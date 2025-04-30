@@ -708,7 +708,9 @@ The double-quotes aren’t strictly <em>necessary</em> in this case.
 They’re mostly needed if you want to include a colon in the title.</p>
 <p>RStudio creates the document with some example text to get you
 started. Note below that there are chunks like</p>
-<p><code>{verbatim} ```{r} 1 + 1 ```</code></p>
+<pre><code>```{r}
+1 + 1
+```</code></pre>
 <p>These are chunks of R code that will be executed by
 <code>knitr</code> and replaced by their results. More on this
 later.</p>
@@ -724,24 +726,24 @@ of markdown.</p>
 underscores, like this: <code>_italics_</code>.</p>
 <p>You can make a bulleted list by writing a list with hyphens or
 asterisks with a space between the list and other text, like this:</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="an">A list:</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="ss">* </span>bold with double-asterisks</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="ss">* </span>italics with underscores</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="ss">* </span>code-type font with backticks</span></code></pre>
-</div>
-<p>or like this:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="an">A second list:</span></span>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="an">A list:</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="ss">- </span>bold with double-asterisks</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="ss">- </span>italics with underscores</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="ss">- </span>code-type font with backticks</span></code></pre>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="ss">* </span>bold with double-asterisks</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="ss">* </span>italics with underscores</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="ss">* </span>code-type font with backticks</span></code></pre>
+</div>
+<p>or like this:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="an">A second list:</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ss">- </span>bold with double-asterisks</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="ss">- </span>italics with underscores</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ss">- </span>code-type font with backticks</span></code></pre>
 </div>
 <p>Each will appear as:</p>
 <ul><li>bold with double-asterisks</li>
@@ -751,12 +753,12 @@ asterisks with a space between the list and other text, like this:</p>
 This maintains the readability of your code.</p>
 <p>You can make a numbered list by just using numbers. You can even use
 the same number over and over if you want:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ss">1. </span>bold with double-asterisks</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ss">1. </span>italics with underscores</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ss">1. </span>code-type font with backticks</span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ss">1. </span>bold with double-asterisks</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ss">1. </span>italics with underscores</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="ss">1. </span>code-type font with backticks</span></code></pre>
 </div>
 <p>This will appear as:</p>
 <ol style="list-style-type: decimal"><li>bold with double-asterisks</li>
@@ -764,16 +766,16 @@ the same number over and over if you want:</p>
 <li>code-type font with backticks</li>
 </ol><p>You can make section headers of different sizes by initiating a line
 with some number of <code>#</code> symbols:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu"># Title</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="fu">## Main section</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fu">### Sub-section</span></span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="fu">#### Sub-sub section</span></span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu"># Title</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">## Main section</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="fu">### Sub-section</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">#### Sub-sub section</span></span></code></pre>
 </div>
 <p>You <em>compile</em> the R Markdown document to an html webpage by
 clicking the “Render” button in the upper-left. Or using the keyboard
@@ -805,23 +807,23 @@ itemized list).</p>
 <p>In RStudio, select
 <code>File &gt; New file &gt; Quarto Document...</code></p>
 <p>Delete the placeholder text and add the following:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">## Background on Data</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>This report uses the *gapminder* dataset, which has columns that include:</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="ss">* </span>country</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="ss">* </span>continent</span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="ss">* </span>year</span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="ss">* </span>lifeExp</span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="ss">* </span>pop</span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="ss">* </span>gdpPercap</span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="fu">## Background on Methods</span></span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">## Background on Data</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>This report uses the *gapminder* dataset, which has columns that include:</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="ss">* </span>country</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="ss">* </span>continent</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="ss">* </span>year</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="ss">* </span>lifeExp</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="ss">* </span>pop</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="ss">* </span>gdpPercap</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="fu">## Background on Methods</span></span></code></pre>
 </div>
 <p>Then click the ‘Render’ button on the toolbar to generate an html
 document (webpage).</p>
@@ -851,7 +853,10 @@ RStudio.</p>
 code. When processed, the R code will be executed; if they produce
 figures, the figures will be inserted in the final document.</p>
 <p>The main code chunks look like this:</p>
-<p><code>{verbatim} ```{r} #| label: load_data gapminder &lt;- read.csv("gapminder.csv") ```</code></p>
+<pre><code>```{r}
+#| label: load_data
+gapminder &lt;- read.csv("gapminder.csv")
+```</code></pre>
 <p>That is, you place a chunk of R code between <code>```{r}</code> and
 <code>```</code>. You should give each chunk a unique name, by inserting
 the line <code>#| label: label_name</code> as they will help you to fix
@@ -872,7 +877,9 @@ quickly in RStudio using the shortcuts
 <div class="accordion-body">
 <p>In R Markdown, you add chunk labels by including them within the
 <code>```{r}</code> line like so:</p>
-<p><code>{verbatim} ```{r label_data} gapminder &lt;- read.csv("gapminder.csv") ```</code></p>
+<pre><code>```{r label_data}
+gapminder &lt;- read.csv("gapminder.csv")
+```</code></pre>
 </div>
 </div>
 </div>
@@ -900,9 +907,18 @@ quickly in RStudio using the shortcuts
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<p><code>{verbatim} ```{r} #| label: libraries library(ggplot2) ```</code></p>
-<p><code>{verbatim} ```{r} #| label: load-gapminder-data gapminder &lt;- read.csv("gapminder.csv") ```</code></p>
-<p><code>{verbatim} ```{r} #| label: make-plot plot(lifeExp ~ year, data = gapminder) ```</code></p>
+<pre><code>```{r}
+#| label: libraries
+library(ggplot2)
+```</code></pre>
+<pre><code>```{r}
+#| label: load-gapminder-data
+gapminder &lt;- read.csv("gapminder.csv")
+```</code></pre>
+<pre><code>```{r}
+#| label: make-plot
+plot(lifeExp ~ year, data = gapminder)
+```</code></pre>
 </div>
 </div>
 </div>
@@ -930,24 +946,30 @@ hide any warnings or messages produced.</li>
 <li>Use <code>fig.height</code> and <code>fig.width</code> to control
 the size of the figures produced (in inches).</li>
 </ul><p>So you might write:</p>
-<p><code>{verbatim} ```{r} #| label: load_libraries #| echo: false #| message: false library(dplyr) library(ggplot2) ```</code></p>
+<pre><code>```{r}
+#| label: load_libraries
+#| echo: false
+#| message: false
+library(dplyr)
+library(ggplot2)
+```</code></pre>
 <p>Often there will be particular options that you’ll want to use
 repeatedly; for this, you can set <em>global</em> chunk options in the
 files YAML header like so:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">...</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">knitr:</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">  opts_chunk:</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">    message: false</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">    warning: false</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">    echo: false</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">    results: "hide"</span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">    fig.path: "Figs/</span></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">    fig.width: 11</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">---</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co">...</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">knitr:</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">  opts_chunk:</span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">    message: false</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">    warning: false</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">    echo: false</span></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">    results: "hide"</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">    fig.path: "Figs/</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">    fig.width: 11</span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">---</span></span></code></pre>
 </div>
 <p>The <code>fig.path</code> option defines where the figures will be
 saved. The <code>/</code> here is really important; without it, the
@@ -978,7 +1000,12 @@ code.</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<p><code>{verbatim} ```{r} #| label: faitful-plot #| echo: false #| fig.width: 3 plot(faitful) ```</code></p>
+<pre><code>```{r}
+#| label: faitful-plot
+#| echo: false
+#| fig.width: 3
+plot(faitful)
+```</code></pre>
 </div>
 </div>
 </div>
@@ -1018,7 +1045,7 @@ that larger chunk (which is the same as <code>echo=FALSE</code> and
 <div class="accordion-body">
 <p>Here’s some inline code to determine that 2 + 2 =
 <code>r 2+2</code>:</p>
-<p><code>{verbatim} Here's some inline code to determine that 2 + 2 = `r 2+2`:</code></p>
+<pre><code>Here's some inline code to determine that 2 + 2 = `r 2+2`:</code></pre>
 </div>
 </div>
 </div>
@@ -1051,38 +1078,40 @@ parameters.</p>
 different countries, using the <code>gapminder</code> dataset, but we
 want a separate report for each country. To achieve this, we set the
 YAML header for our Quarto document as follows:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Life Expectancy Report"</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">"Afghanistan"</span></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="pp">---</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Life Expectancy Report"</span></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">"Afghanistan"</span></span>
+<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="pp">---</span></span></code></pre>
 </div>
 <p>We can then reference this parameter anywhere in the R code in our
 report by accessing the <code>params</code> object. To calculate the
 life expectancy for just the country defined by the <code>params</code>,
 we can do:</p>
-<p>`<code>{verbatim}</code>{r} library(tidyverse) library(gapminder)</p>
-<pre><code>
+<pre><code>```{r}
+library(tidyverse)
+library(gapminder)
+```
+
 ```{r}
 life_expectancy &lt;-
   gapminder |&gt;
   select(country, year, lifeExp) |&gt;
-  filter(country == params$country)</code></pre>
-<pre><code>
-The last line in the code chunk above uses the `params` object to filter the `gapminder` dataset.
-Note that we can also `params` in inline R code snippets. So we can generate a heading that will
-change based on the country parameter:
-
-````{verbatim}
-## Life Expectancy in `r params$country`
+  filter(country == params$country)
+```</code></pre>
+<p>The last line in the code chunk above uses the <code>params</code>
+object to filter the <code>gapminder</code> dataset. Note that we can
+also <code>params</code> in inline R code snippets. So we can generate a
+heading that will change based on the country parameter:</p>
+<pre><code>## Life Expectancy in `r params$country`
 
 ```{r}
 #| label: !expr paste0("life-expectancy-plot", params$country)
@@ -1092,12 +1121,12 @@ ggplot(life_expectancy, aes(year, lifeExp)) +
 ```</code></pre>
 <p>In fact, we can even use this in the main document title in the YAML
 header, as it also accepts R code expressions:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Life Expectancy Report for `r params$country`"</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="co">...</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Life Expectancy Report for `r params$country`"</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co">...</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -1111,7 +1140,7 @@ This function takes a Quarto file and any execution parameters as
 input.</p>
 <p>So to generate the life expectancy report for Afghanistan, we can
 write a script with the following code:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1145,7 +1174,7 @@ correct output files, you might notice that each report will show the
 the Quarto R package.</p>
 <p>With R Markdown we don’t have this issue, to render we would use the
 following code:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
