@@ -1,9 +1,13 @@
 [![01 Build and Deploy Site](https://github.com/UCL-ARC/r-amr-epidemiology/actions/workflows/sandpaper-main.yaml/badge.svg)](https://github.com/UCL-ARC/r-amr-epidemiology/actions/workflows/sandpaper-main.yaml)
 
-# R for AMR Epidemiology adapted from R for Reproducible Scientific Analysis
+# Introduction to R, Databases and Reproducibility for AMR Epidemiologists
+
+## Previously: R for AMR Epidemiology adapted from R for Reproducible Scientific Analysis
 
 This lesson was commisioned by the EPSRC Digital Health Hub for AMR, for delivery
 to the UK HSA w/c 16th September 2024.
+
+Materials were modified for redelivery in March 2025, including renaming of workshop.
 
 An introduction to R for non-programmers using the [Gapminder][gapminder] data.
 In addition, this lesson makes use of open data from the [Centre for Consumer Research Data](https://data.cdrc.ac.uk/)
