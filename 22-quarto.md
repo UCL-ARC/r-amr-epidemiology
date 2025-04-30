@@ -565,7 +565,7 @@ quarto_render("life_expectancy_report.qmd", execute_params = list(country = "Afg
 And now for the real magic, we can modify our script to render a report for a list of countries
 of interest from the `gapminder` dataset.
 
-```{r}
+```r
 # render-all-reports.R
 library(quarto)
 countries <- c("Afghanistan", "Belgium", "India", "United Kingdom")
