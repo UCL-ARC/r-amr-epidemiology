@@ -575,7 +575,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>SQL and R</h1>
-        <p>Last updated on 2025-04-27 |
+        <p>Last updated on 2025-05-01 |
 
         <a href="https://github.com/UCL-ARC/r-amr-epidemiology/edit/main/episodes/27-sql-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -1046,7 +1046,7 @@ highest to lowest value.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -45032,7 +45032,8 @@ co-amoxiclav?” we can utilise the <code>WHERE</code> clause.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dbGetQuery</span> <span class="op">(</span><span class="va">epiDB</span>, <span class="st">"SELECT id, spec_date, trst_cd</span></span>
 <span><span class="st">            FROM amrTests </span></span>
-<span><span class="st">            WHERE coamox = '1'"</span><span class="op">)</span></span></code></pre>
+<span><span class="st">            WHERE coamox = '1'</span></span>
+<span><span class="st">            "</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -45288,13 +45289,23 @@ co-amoxiclav?” we can utilise the <code>WHERE</code> clause.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dbGetQuery</span> <span class="op">(</span><span class="va">epiDB</span>, <span class="st">"SELECT id, spec_date, trst_cd </span></span>
 <span><span class="st">            FROM amrTests </span></span>
-<span><span class="st">            WHERE (imd &lt; 3) AND (WHERE coamox != '1')</span></span>
+<span><span class="st">            WHERE imd &lt; 3 AND coamox != '1'</span></span>
 <span><span class="st">            LIMIT 10"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error: near "WHERE": syntax error</code></pre>
+<pre class="output" tabindex="0"><code>   id  spec_date trst_cd
+1   8 2014-05-25     RJN
+2  11 2014-05-25     RJN
+3  13 2014-05-25     RX4
+4  16 2014-05-25     RYK
+5  18 2014-05-25     RYG
+6  36 2014-05-26     RX6
+7  47 2014-05-26     RXM
+8  48 2014-05-26     RC3
+9  51 2014-05-26     RQ3
+10 53 2014-05-26     RY2</code></pre>
 </div>
 <p>In this example we modified our query to return data for tests where
 there is a imd value of 1 and 2 and there wasn’t resistance to
@@ -45358,7 +45369,7 @@ and 3. Limit responses to 15.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -45444,7 +45455,7 @@ query above by using <code>ORDER BY</code> and `DESC``.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">dbGetQuery</span> <span class="op">(</span><span class="va">cdrcDB</span>, <span class="st">"SELECT trst_cd, AVG(age_years_sd)</span></span>
+<code class="sourceCode R"><span><span class="fu">dbGetQuery</span> <span class="op">(</span><span class="va">epiDB</span>, <span class="st">"SELECT trst_cd, AVG(age_years_sd)</span></span>
 <span><span class="st">            FROM amrTests </span></span>
 <span><span class="st">            GROUP BY trst_cd</span></span>
 <span><span class="st">            ORDER BY AVG(age_years_sd) DESC</span></span>
@@ -45452,9 +45463,19 @@ query above by using <code>ORDER BY</code> and `DESC``.</p>
 <span><span class="st">            "</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in h(simpleError(msg, call)): error in evaluating the argument 'conn' in selecting a method for function 'dbGetQuery': object 'cdrcDB' not found</code></pre>
+<pre class="output" tabindex="0"><code>   trst_cd AVG(age_years_sd)
+1      RWK          79.00000
+2      RV9          78.00000
+3      R1G          73.00000
+4      RAS          71.00000
+5      RGD          70.28571
+6      RF4          70.00000
+7      RV3          69.00000
+8      RDU          68.25000
+9      RYH          67.00000
+10     RPG          66.75000</code></pre>
 </div>
 <div id="challenge-3" class="callout challenge">
 <div class="callout-square">
@@ -45477,7 +45498,7 @@ aggregate functions MAX, MIN, AVG, COUNT, SUM.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -45569,7 +45590,7 @@ resistance_count:</p>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">epiDB</span>, <span class="st">"SELECT trst_cd, </span></span>
-<span><span class="st">           SUM(coamox + cipro + gentam) as resistance_count</span></span>
+<span><span class="st">           SUM(coamox + cipro + gentam) AS resistance_count</span></span>
 <span><span class="st">           FROM amrTests</span></span>
 <span><span class="st">           GROUP BY trst_cd </span></span>
 <span><span class="st">           ORDER BY resistance_count DESC</span></span>
@@ -45808,7 +45829,7 @@ would use:</p>
 <p>Write a query that JOINS the <code>trusts</code> and
 <code>amrTests</code> tables and that returns the NHS trust name and
 maximum values of <code>age_years_sd</code> and <code>imd</code> for
-each (<code>nhs_trust_name</code>). Sorted by <code>age_years_ss</code>
+each (<code>nhs_trust_name</code>). Sorted by <code>age_years_sd</code>
 in descending order.</p>
 </div>
 </div>
@@ -45818,7 +45839,7 @@ in descending order.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -45975,8 +45996,8 @@ relational databases.</li>
   "url": "https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/27-sql-r.html",
   "identifier": "https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/27-sql-r.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2025-04-27",
-  "datePublished": "2025-04-30"
+  "dateModified": "2025-05-01",
+  "datePublished": "2025-05-01"
 }
 
   </script><script>
