@@ -44344,7 +44344,8 @@ We can start to ask slightly more complex questions, such as: "Which samples wer
 ``` r
 dbGetQuery (epiDB, "SELECT id, spec_date, trst_cd
             FROM amrTests 
-            WHERE coamox = '1'")
+            WHERE coamox = '1'
+            ")
 ```
 
 ``` output
@@ -44597,12 +44598,22 @@ We can add additional conditions by using `AND`, `OR`, and/or `NOT``.
 ``` r
 dbGetQuery (epiDB, "SELECT id, spec_date, trst_cd 
             FROM amrTests 
-            WHERE (imd < 3) AND (WHERE coamox != '1')
+            WHERE imd < 3 AND coamox != '1'
             LIMIT 10")
 ```
 
-``` error
-Error: near "WHERE": syntax error
+``` output
+   id  spec_date trst_cd
+1   8 2014-05-25     RJN
+2  11 2014-05-25     RJN
+3  13 2014-05-25     RX4
+4  16 2014-05-25     RYK
+5  18 2014-05-25     RYG
+6  36 2014-05-26     RX6
+7  47 2014-05-26     RXM
+8  48 2014-05-26     RC3
+9  51 2014-05-26     RQ3
+10 53 2014-05-26     RY2
 ```
 In this example we modified our query to return data for tests where there is a imd value of 1 and 2 and there wasn't resistance to co-amoxiclav.
 The parantheses are added for readability in this case but can be required by the SQL interpreter in order to disambiguate formulas.
@@ -44718,7 +44729,7 @@ As you can see, it is difficult to tell though what 'trst_cd' has the highest av
 
 
 ``` r
-dbGetQuery (cdrcDB, "SELECT trst_cd, AVG(age_years_sd)
+dbGetQuery (epiDB, "SELECT trst_cd, AVG(age_years_sd)
             FROM amrTests 
             GROUP BY trst_cd
             ORDER BY AVG(age_years_sd) DESC
@@ -44726,8 +44737,18 @@ dbGetQuery (cdrcDB, "SELECT trst_cd, AVG(age_years_sd)
             ")
 ```
 
-``` error
-Error in h(simpleError(msg, call)): error in evaluating the argument 'conn' in selecting a method for function 'dbGetQuery': object 'cdrcDB' not found
+``` output
+   trst_cd AVG(age_years_sd)
+1      RWK          79.00000
+2      RV9          78.00000
+3      R1G          73.00000
+4      RAS          71.00000
+5      RGD          70.28571
+6      RF4          70.00000
+7      RV3          69.00000
+8      RDU          68.25000
+9      RYH          67.00000
+10     RPG          66.75000
 ```
 :::::::::::::::::::::::::::::::::::::::  challenge
 ## Challenge 3
@@ -44812,7 +44833,7 @@ For example, what if we wanted to calculate a new column called resistance_count
 
 ``` r
 dbGetQuery(epiDB, "SELECT trst_cd, 
-           SUM(coamox + cipro + gentam) as resistance_count
+           SUM(coamox + cipro + gentam) AS resistance_count
            FROM amrTests
            GROUP BY trst_cd 
            ORDER BY resistance_count DESC
@@ -45037,7 +45058,7 @@ dbGetQuery (epiDB, "SELECT AVG(amrTests.age_years_sd), amrTests.trst_cd, trusts.
 ## Challenge 4
 
 Write a query that JOINS the `trusts` and `amrTests` tables and that returns the NHS trust name and maximum values of `age_years_sd` and `imd` for each (`nhs_trust_name`).
-Sorted by `age_years_ss` in descending order.
+Sorted by `age_years_sd` in descending order.
 
 :::::::::::::::  solution
 ## Solution
