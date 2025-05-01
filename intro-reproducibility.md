@@ -29,11 +29,19 @@ Open science practices can help support both reproducible practices but also aid
 
 >"an  inclusive construct that combines various movements and practices aiming to  make  multilingual  >scientific  knowledge  openly  available,  accessible  and  reusable  for  everyone,  to  increase  >scientific  collaborations  and  sharing  of  information for the benefits of science and society, and to >open the processes of scientific knowledge creation, evaluation and communication to societal actors >beyond the traditional scientific community.".
 
+### What is reproducibility?
+[The Turing Way](https://book.the-turing-way.org/reproducible-research/reproducible-research) defines reproducibile research as "work that can be independently recreated from the same data and the same code that the original team used", making it distinct from research that is replicable, robust and generalisable.
+
+They illustrated the differences between the terms with the following diagram:
+![](fig/tw-definitions.jpg){alt="Reproducible produces the same answer: when the same data and same analysis are used. Replicable produces qualitatively similar answers: when different data, the same analysis is used. Robust results show that the work is not dependent on the specificities of the programming language chosen to perform the analysis: when the same data, but a different analysis is used. Generalisable: combining replicable and robust findings allow us to form generalisable results."}
+
+Image source:[How the Turing Way defines reproducible research](https://book.the-turing-way.org/reproducible-research/overview/overview-definitions)
+
 ### What does this mean practically?
 
 Some specific practices for epidemiology have been identified:
 
-![](fig/os_epidemiology.jpg){alt="Five practices for clincal epidemiology. 1 Study registration, 2 open data, code and materials, 3 Use of reporting guidelines, 4 pre prints 5 Open access}
+![](fig/os_epidemiology.jpg){alt="Five practices for clincal epidemiology. 1 Study registration, 2 open data, code and materials, 3 Use of reporting guidelines, 4 pre prints 5 Open access"}
 Image source:[Key challenges in epidemiology: embracing open science](https://www.jclinepi.com/article/S0895-4356(24)00374-3/fulltext#fig1)
 
 Those that relate directly to the skills introduced in this training are:
@@ -43,6 +51,10 @@ Those that relate directly to the skills introduced in this training are:
 #### Open data, code and materials
 
 Open data, code, and material enhance collaboration between researchers, enhance transparency, and reduce research waste and disparity in accessing research resources, in turn accelerating discovery and fostering innovation by following FAIR (Findable, Accessible, Interoperable, Reusable) principles while protecting the sovereignty of indigenous data following CARE (Collective Benefit, Authority to Control, Responsibility, Ethics) principles.
+
+![](fig/scriberia-illustration.jpg){alt="There are a number of components that need to be shared for work to be reproducible, these include: data, code, tools and results"}
+
+Image source:The Turing Way project illustration by Scriberia. Used under a CC-BY 4.0 licence. DOI: [The Turing Way Community & Scriberia (2024)](https://doi.org/10.5281/ZENODO.3332807).
 
 #### Use of reporting guidelines
 
