@@ -1,351 +1,351 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/01-git-basics.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/01-git-basics.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/01-rstudio-intro.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/01-rstudio-intro.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/02-git-setup.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/02-git-setup.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/02-project-intro.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/02-project-intro.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/03-git-create.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/03-git-create.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/03-seeking-help.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/03-seeking-help.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/04-data-structures-part1.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/04-data-structures-part1.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/04-git-rs-changes.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/04-git-rs-changes.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/05-data-structures-part2.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/05-data-structures-part2.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/05-git-history.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/05-git-history.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/06-filedir.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/06-filedir.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/06-git-ignore.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/06-git-ignore.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/07-basics.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/07-basics.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/07-rs-github.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/07-rs-github.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/08-rs-github-collab.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/08-rs-github-collab.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/08-setup.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/08-setup.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/09-create.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/09-create.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/09-rs-github-conflict.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/09-rs-github-conflict.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/10-changes.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/10-changes.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/10-open.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/10-open.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/10-rs-github-branches.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/10-rs-github-branches.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/11-history.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/11-history.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/11-licensing.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/11-licensing.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/11-rs-github-issues.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/11-rs-github-issues.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/12-citation.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/12-citation.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/12-ignore.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/12-ignore.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/13-hosting.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/13-hosting.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/13-supplemental-rstudio.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/13-supplemental-rstudio.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/14-data-subsetting.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/14-data-subsetting.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/15-plot-ggplot2.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/15-plot-ggplot2.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/16-writing-data.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/16-writing-data.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/17-github.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/17-github.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/18-collab.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/18-collab.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/19-conflict.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/19-conflict.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/20-dplyr.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/20-dplyr.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/21-tidyr.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/21-tidyr.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/22-knitr-markdown.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/22-knitr-markdown.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/22-quarto.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/22-quarto.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/23-statistics.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/23-statistics.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/24-linear-reg-broom.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/24-linear-reg-broom.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/25-linreg-diagnostics.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/25-linreg-diagnostics.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/26-log-regression.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/26-log-regression.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/27-sql-r.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/27-sql-r.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/27-wrap-up.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/27-wrap-up.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/404.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/404.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/CODE_OF_CONDUCT.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/LICENSE.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/aio.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/aio.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/best-practices-R.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/best-practices-R.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/broom.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/broom.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/discuss.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/discuss.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/images.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/images.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/index.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/index.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/01-git-basics.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/01-git-basics.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/01-rstudio-intro.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/01-rstudio-intro.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/02-git-setup.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/02-git-setup.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/02-project-intro.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/02-project-intro.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/03-git-create.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/03-git-create.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/03-seeking-help.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/03-seeking-help.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/04-data-structures-part1.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/04-data-structures-part1.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/04-git-rs-changes.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/04-git-rs-changes.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/05-data-structures-part2.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/05-data-structures-part2.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/05-git-history.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/05-git-history.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/06-filedir.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/06-filedir.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/06-git-ignore.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/06-git-ignore.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/07-basics.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/07-basics.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/07-rs-github.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/07-rs-github.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/08-rs-github-collab.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/08-rs-github-collab.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/08-setup.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/08-setup.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/09-create.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/09-create.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/09-rs-github-conflict.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/09-rs-github-conflict.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/10-changes.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/10-changes.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/10-open.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/10-open.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/10-rs-github-branches.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/10-rs-github-branches.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/11-history.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/11-history.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/11-licensing.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/11-licensing.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/11-rs-github-issues.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/11-rs-github-issues.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/12-citation.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/12-citation.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/12-ignore.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/12-ignore.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/13-hosting.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/13-hosting.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/13-supplemental-rstudio.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/13-supplemental-rstudio.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/14-data-subsetting.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/14-data-subsetting.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/15-plot-ggplot2.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/15-plot-ggplot2.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/16-writing-data.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/16-writing-data.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/17-github.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/17-github.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/18-collab.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/18-collab.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/19-conflict.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/19-conflict.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/20-dplyr.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/20-dplyr.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/21-tidyr.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/21-tidyr.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/22-knitr-markdown.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/22-knitr-markdown.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/22-quarto.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/22-quarto.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/23-statistics.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/23-statistics.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/24-linear-reg-broom.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/24-linear-reg-broom.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/25-linreg-diagnostics.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/25-linreg-diagnostics.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/26-log-regression.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/26-log-regression.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/27-sql-r.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/27-sql-r.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/27-wrap-up.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/27-wrap-up.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/404.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/404.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/LICENSE.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/aio.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/aio.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/best-practices-R.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/best-practices-R.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/broom.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/broom.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/discuss.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/discuss.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/images.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/images.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/index.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/index.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/instructor-notes.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/instructor-notes.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/intro-reproducibility.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/intro-reproducibility.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/key-points.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/key-points.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/profiles.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/profiles.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor/reference.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/reference.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/instructor-notes.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor-notes.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/intro-reproducibility.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/intro-reproducibility.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/key-points.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/key-points.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/profiles.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/profiles.html</loc>
   </url>
   <url>
-    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology/reference.html</loc>
+    <loc>https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/reference.html</loc>
   </url>
 </urlset>
