@@ -27,9 +27,10 @@ verify analyses is incredibly important. Epidemiological studies are often large
 
 Open science practices can help support both reproducible practices but also aid the interpretation of analyses outcomes. The [UNESCO Open Science recommendations](https://unesdoc.unesco.org/ark:/48223/pf0000379949) defines open science as:
 
->"an  inclusive construct that combines various movements and practices aiming to  make  multilingual  >scientific  knowledge  openly  available,  accessible  and  reusable  for  everyone,  to  increase  >scientific  collaborations  and  sharing  of  information for the benefits of science and society, and to >open the processes of scientific knowledge creation, evaluation and communication to societal actors >beyond the traditional scientific community.".
+> "An inclusive construct that combines various movements and practices aiming to make multilingual scientific knowledge openly available, accessible and reusable for everyone, to increase scientific collaborations and sharing of information for the benefits of science and society, and to open the processes of scientific knowledge creation, evaluation and communication to societal actors beyond the traditional scientific community.".
 
 ### What is reproducibility?
+
 [The Turing Way](https://book.the-turing-way.org/reproducible-research/reproducible-research) defines reproducibile research as "work that can be independently recreated from the same data and the same code that the original team used", making it distinct from research that is replicable, robust and generalisable.
 
 They illustrated the differences between the terms with the following diagram:
@@ -75,14 +76,13 @@ In teams you will:
 
 1. Select a paper: [No Effect of Nature Representations on State Anxiety, Actual and Perceived Noise](https://www.reprohack.org/paper/49/), [Mental Health and Social Contact During the COVID-19 Pandemic: An Ecological Momentary Assessment Study](https://www.reprohack.org/paper/32/) or [Evaluation of the ‘Irish Rules’: The Potato Late Blight Forecasting Model and Its Operational Use in the Republic of Ireland](https://www.reprohack.org/paper/26/)
 
-2. Create a new R markdown document and record: the paper, team members, 
+2. Create a new R markdown document and record: the paper, team members,
 comments on the paper - what helped or hindered reproducibility.
 
 3. Download paper, code and data
 
 4. Work on your selected paper. If you wish to create an account on [Reprohack.org](https://www.reprohack.org/accounts/signup/) and provide feedback.
 
-5. Feedback at the end 
+5. Feedback at the end
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
