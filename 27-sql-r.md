@@ -53,7 +53,7 @@ The relationship between tables can be represented by an Entity-Relationship Dia
 
 The database that we will be using is represented in the diagram below:
 
-![](fig/amr_database.png){alt='E-R diagram showing the three tables of the database and the relationship between them'}
+![](fig/amr_database_v2.png){alt='E-R diagram showing the three tables of the database and the relationship between them'}
 Relationships between entities and their attributes are represented by lines linking them together. For example, the line linking amr and trust is interpreted as follows: The ‘amr’ entity is related to the ‘trust’ entity through the attributes ‘trst_cd’ and ‘nhs_trust_code’ respectively.
 
 Conceptually, we know that an individual test for antimicrobial resistance takes place is a single NHS trust but a NHS trust can be the location of many AMR tests. This is known as a one-to-many relationship. In modeling relationships, we usually assign a unique identifier to the ‘one’ side of the relationship and use that same identifier to refer to that entity on the ‘many’ side. 
@@ -95,10 +95,10 @@ We will be using synthetic data about AMR test samples, NHS trusts and ICD-10 cl
 
 
 ``` r
-# Import data initially to dataframes 
-trusts <- read.csv('data/trust_data.csv')
-icd10 <- read.csv('data/icd10_data.csv')
-amrTests <- read.csv('data/dig_health_hub_amr_v2.csv')
+# Import data initially to dataframes
+trusts <- read.csv("data/trust_data.csv")
+icd10 <- read.csv("data/icd10_data.csv")
+amrTests <- read.csv("data/dig_health_hub_amr_v2.csv")
 ```
 
 We have a lot of information about the amrTests but we do not know the age of the participants when the samples were taken. So let's add an additional column to our data frame
@@ -106,7 +106,7 @@ We have a lot of information about the amrTests but we do not know the age of th
 
 ``` r
 # Calculate age (in years) as of their last birthday and add as an additional variable to our data.
-# The %--% and %/% are syntax specific to lubridate. 
+# The %--% and %/% are syntax specific to lubridate.
 # In the first part we are asking it to find the difference between the two dates.
 # We are then rounding down to the nearest year.
 
@@ -154,38 +154,20 @@ and start adding our tables:
 
 
 ``` r
-#create tables
+# create tables
 
-dbWriteTable(epiDB, "trusts", trusts)
-```
+dbWriteTable(epiDB, "trusts", trusts, overwrite = TRUE)
+dbWriteTable(epiDB, "icd10", icd10, overwrite = TRUE)
+dbWriteTable(epiDB, "amrTests", amrTests, overwrite = TRUE)
 
-``` error
-Error: Table trusts exists in database, and both overwrite and append are FALSE
-```
-
-``` r
-dbWriteTable(epiDB, "icd10", icd10)
-```
-
-``` error
-Error: Table icd10 exists in database, and both overwrite and append are FALSE
-```
-
-``` r
-dbWriteTable(epiDB, "amrTests", amrTests)
-```
-
-``` error
-Error: Table amrTests exists in database, and both overwrite and append are FALSE
-```
-
-``` r
 dbListTables(epiDB)
 ```
 
 ``` output
 [1] "amrTests" "icd10"    "trusts"  
 ```
+
+We set `overwrite = TRUE` so we don't get an error in case the tables already exist (e.g. from previous runs of this code).
 
 ## Selecting data
 
@@ -311,8 +293,8 @@ We can also sort the results of our queries by using the keyword `ORDER BY`.
 Let's create a query that sorts the `trusts` table in ascending order by `nhs_trust_code` using the `ASC` keyword in conjunction with `ORDER BY`.
 
 ``` r
-dbGetQuery(epiDB, "SELECT * 
-           FROM trusts 
+dbGetQuery(epiDB, "SELECT *
+           FROM trusts
            ORDER BY nhs_trust_code ASC
            LIMIT 10")
 ```
@@ -377,7 +359,7 @@ ordered by the `CodeLength` from highest to lowest value.
 
 ``` r
 dbGetQuery(epiDB, "SELECT Code, Description, DescriptionSource
-           FROM icd10 
+           FROM icd10
            ORDER BY CodeLength DESC")
 ```
 
@@ -44342,7 +44324,7 @@ We can start to ask slightly more complex questions, such as: "Which samples wer
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT id, spec_date, trst_cd
+dbGetQuery(epiDB, "SELECT id, spec_date, trst_cd
             FROM amrTests 
             WHERE coamox = '1'
             ")
@@ -44596,7 +44578,7 @@ dbGetQuery (epiDB, "SELECT id, spec_date, trst_cd
 We can add additional conditions by using `AND`, `OR`, and/or `NOT``.
 
 ``` r
-dbGetQuery (epiDB, "SELECT id, spec_date, trst_cd 
+dbGetQuery(epiDB, "SELECT id, spec_date, trst_cd 
             FROM amrTests 
             WHERE imd < 3 AND coamox != '1'
             LIMIT 10")
@@ -44624,8 +44606,8 @@ For example, using the `trusts` table, let's `SELECT` all of the data `WHERE` th
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT DISTINCT nhs_trust_name
-            FROM trusts 
+dbGetQuery(epiDB, "SELECT DISTINCT nhs_trust_name
+            FROM trusts
             WHERE nhs_trust_name LIKE '%and%'
             LIMIT 10
             ")
@@ -44660,8 +44642,8 @@ where coamox is 1 or imd is between 1 and 3. Limit responses to 15.
 
 ``` r
 dbGetQuery(epiDB, "SELECT spec_date, trst_cd, imd, organism, coamox, cipro
-           FROM amrTests 
-           WHERE (coamox = 1) OR (imd BETWEEN 1 AND 3) 
+           FROM amrTests
+           WHERE (coamox = 1) OR (imd BETWEEN 1 AND 3)
            LIMIT 15")
 ```
 
@@ -44702,8 +44684,8 @@ Let's say we wanted to get the average age of participants in each trust. We can
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT trst_cd, AVG(age_years_sd)
-            FROM amrTests 
+dbGetQuery(epiDB, "SELECT trst_cd, AVG(age_years_sd)
+            FROM amrTests
             GROUP BY trst_cd
             LIMIT 10
             ")
@@ -44723,14 +44705,14 @@ dbGetQuery (epiDB, "SELECT trst_cd, AVG(age_years_sd)
 10     R1K          60.66667
 ```
 
-`GROUP BY` is used by SQL to arrange identical data into groups. In this case, we are arranging all the ages at time of sample by trust code ('trst_cd`). `AVG acts` on the 'age_yrs_sd' in parentheses. This process is also called aggregation which allows us to combine results by grouping records based on value and calculating combined values in groups.
+`GROUP BY` is used by SQL to arrange identical data into groups. In this case, we are arranging all the ages at time of sample by trust code (`trst_cd`). `AVG` acts on the `age_yrs_sd` in parentheses. This process is also called aggregation which allows us to combine results by grouping records based on value and calculating combined values in groups.
 
 As you can see, it is difficult to tell though what 'trst_cd' has the highest average age and which has the lowest. We can improve upon the query above by using `ORDER BY` and `DESC``.
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT trst_cd, AVG(age_years_sd)
-            FROM amrTests 
+dbGetQuery(epiDB, "SELECT trst_cd, AVG(age_years_sd)
+            FROM amrTests
             GROUP BY trst_cd
             ORDER BY AVG(age_years_sd) DESC
             LIMIT 10
@@ -44760,8 +44742,8 @@ Using the amrTests table, write a query using an aggregate function that returns
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT trst_cd, SUM(coamox)
-            FROM amrTests 
+dbGetQuery(epiDB, "SELECT trst_cd, SUM(coamox)
+            FROM amrTests
             GROUP BY trst_cd
             ORDER BY SUM(coamox) DESC
             LIMIT 10
@@ -44794,8 +44776,8 @@ For example, we can adapt the last request we wrote to only return information a
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT SUM(coamox), SUM(cipro), SUM(gentam), trst_cd, AVG(age_years_sd)
-            FROM amrTests 
+dbGetQuery(epiDB, "SELECT SUM(coamox), SUM(cipro), SUM(gentam), trst_cd, AVG(age_years_sd)
+            FROM amrTests
             GROUP BY trst_cd
             HAVING AVG(age_years_sd) > 50
             LIMIT 10
@@ -44835,7 +44817,7 @@ For example, what if we wanted to calculate a new column called resistance_count
 dbGetQuery(epiDB, "SELECT trst_cd, 
            SUM(coamox + cipro + gentam) AS resistance_count
            FROM amrTests
-           GROUP BY trst_cd 
+           GROUP BY trst_cd
            ORDER BY resistance_count DESC
            LIMIT 10
            ")
@@ -44869,8 +44851,8 @@ Let's start by joining data from the `trusts` table with the `amrTests` table. T
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT *
-            FROM amrTests 
+dbGetQuery(epiDB, "SELECT *
+            FROM amrTests
             JOIN trusts
             ON amrTests.trst_cd = trusts.nhs_trust_code
             LIMIT 10
@@ -44972,8 +44954,8 @@ For example:
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT amrTests.spec_date, amrTests.coamox, trusts.nhs_trust_name, trusts.town
-            FROM amrTests 
+dbGetQuery(epiDB, "SELECT amrTests.spec_date, amrTests.coamox, trusts.nhs_trust_name, trusts.town
+            FROM amrTests
             JOIN trusts
             ON amrTests.trst_cd = trusts.nhs_trust_code
             LIMIT 10
@@ -45021,8 +45003,8 @@ So, if we wanted the average age of particpants and name of each trust we would 
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT AVG(amrTests.age_years_sd), amrTests.trst_cd, trusts.nhs_trust_name 
-            FROM amrTests 
+dbGetQuery(epiDB, "SELECT AVG(amrTests.age_years_sd), amrTests.trst_cd, trusts.nhs_trust_name
+            FROM amrTests
             JOIN trusts
             ON amrTests.trst_cd = trusts.nhs_trust_code
             GROUP BY amrTests.trst_cd
@@ -45065,9 +45047,9 @@ Sorted by `age_years_sd` in descending order.
 
 
 ``` r
-dbGetQuery (epiDB, "SELECT DISTINCT trusts.nhs_trust_name, MAX(amrTests.age_years_sd),
+dbGetQuery(epiDB, "SELECT DISTINCT trusts.nhs_trust_name, MAX(amrTests.age_years_sd),
             MAX(amrTests.imd)
-            FROM amrTests 
+            FROM amrTests
             JOIN trusts
             ON amrTests.trst_cd = trusts.nhs_trust_code
             GROUP BY trusts.nhs_trust_name
