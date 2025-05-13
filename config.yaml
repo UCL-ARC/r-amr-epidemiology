@@ -28,7 +28,7 @@ life_cycle: "stable"
 license: "CC-BY 4.0"
 
 # Link to the source repository for this lesson
-source: "https://github.com/UCL-ARC/r-amr-epidemiology"
+source: "https://github.com/UCL-ARC/r-amr-epidemiology-ni"
 
 # Default branch of your lesson
 branch: "main"
@@ -64,7 +64,7 @@ episodes:
   - 02-project-intro.Rmd
   - 03-seeking-help.Rmd
   - 04-data-structures-part1.Rmd
-  - 05-data-structures-part2.Rmd 
+  - 05-data-structures-part2.Rmd
   - 14-data-subsetting.Rmd
   # - 07-control-flow.Rmd
   - 15-plot-ggplot2.Rmd
@@ -75,28 +75,12 @@ episodes:
   - 21-tidyr.Rmd
   # basic stats
   - 23-statistics.Rmd
-  - 26-log-regression.Rmd 
+  - 26-log-regression.Rmd
   - broom.Rmd
   - 22-quarto.md
+  - 27-sql-r.Rmd
   - best-practices-R.Rmd
   - intro-reproducibility.Rmd
- # new content for use within RStudio
-  - 01-git-basics.md
-  - 02-git-setup.md
-  - 03-git-create.md
-  - 04-git-rs-changes.md
-  - 05-git-history.md
-  - 06-git-ignore.md
-  - 07-rs-github.md
-  - 08-rs-github-collab.md
-  - 09-rs-github-conflict.md
-  - 10-rs-github-branches.md
-  - 11-rs-github-issues.md
-  - 10-open.md
-  - 11-licensing.md
-  - 12-citation.md
-  - 13-hosting.md
-  - 27-sql-r.Rmd
   - 27-wrap-up.Rmd
   - 25-linreg-diagnostics.Rmd #supplemental file
 
@@ -114,6 +98,5 @@ profiles:
 # This space below is where custom yaml items (e.g. pinning
 # sandpaper and varnish versions) should live
 
-url: "https://UCL-ARC.github.io/R-AMR-Epidemiology"
-analytics: carpentries
+url: "https://UCL-ARC.github.io/R-AMR-Epidemiology-NI"
 lang: en
