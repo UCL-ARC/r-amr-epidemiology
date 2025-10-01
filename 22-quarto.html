@@ -332,7 +332,9 @@
 <li><a href="#r-code-chunks">R code chunks</a></li>
 <li><a href="#how-things-get-compiled">How things get compiled</a></li>
 <li><a href="#chunk-options">Chunk options</a></li>
+<li><a href="#resistance-percentages">Resistance percentages</a></li>
 <li><a href="#inline-r-code">Inline R code</a></li>
+<li><a href="#inline-example-explained">Inline example explained:</a></li>
 <li><a href="#other-output-options">Other output options</a></li>
 <li><a href="#parameterised-reports">Parameterised reports</a></li>
 <li><a href="#resources">Resources</a></li>
@@ -553,7 +555,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Producing Reports With Quarto</h1>
-        <p>Last updated on 2025-09-16 |
+        <p>Last updated on 2025-10-01 |
 
         <a href="https://github.com/UCL-ARC/r-amr-epidemiology-ni/edit/main/episodes/22-quarto.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -590,6 +592,8 @@ blocks, for example when discussing the results of some
 calculations</li>
 <li>Be aware of alternative output formats to which a Quarto file can be
 exported</li>
+<li>Produce a report using the AMR R package to analyse antimicrobial
+susceptibility data</li>
 </ul></div>
 </div>
 </div>
@@ -650,7 +654,7 @@ document.</p>
 in each chunk and creates a new markdown (<code>.md</code>) document,
 which will include both the regular text and output from the executed
 code chunks. This markdown file is then converted to the final output
-format with <a href="http://pandoc.org/" class="external-link">pandoc</a>. This whole process
+format with <a href="https://pandoc.org/" class="external-link">pandoc</a>. This whole process
 is handled for you by the <em>Render</em> button in the RStudio IDE.</p>
 </section><section><h2 class="section-heading" id="creating-a-quarto-document">Creating a Quarto document<a class="anchor" aria-label="anchor" href="#creating-a-quarto-document"></a></h2>
 <hr class="half-width"><p>Within RStudio, click
@@ -760,9 +764,10 @@ Linux, or <kbd>Shift</kbd>+<kbd>Cmd</kbd>+<kbd>K</kbd> on Mac.</p>
 <div id="challenge-1" class="callout-inner">
 <h3 class="callout-title">Challenge 1</h3>
 <div class="callout-content">
-<p>Create a new Quarto document. Delete all of the R code chunks and
-write a bit of Markdown (some sections, some italicized text, and an
-itemized list).</p>
+<p>Create a new Quarto document called “Data analysis with the AMR
+Package”</p>
+<p>Delete all of the R code chunks and write a bit of Markdown (some
+sections, some italicized text, and an itemized list).</p>
 <p>Convert the document to a webpage.</p>
 </div>
 </div>
@@ -784,18 +789,13 @@ itemized list).</p>
 </h3>
 <pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu"># Introduction</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">## Background on Data</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">## Background on R package</span></span>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>This report uses the *gapminder* dataset, which has columns that include:</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>This report uses the **AMR R package** to carry out standardised and reproducible Antimicrobial Resistance (AMR) data analysis.</span>
 <span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="ss">* </span>country</span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="ss">* </span>continent</span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="ss">* </span>year</span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="ss">* </span>lifeExp</span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="ss">* </span>pop</span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="ss">* </span>gdpPercap</span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="fu">## Background on Methods</span></span></code></pre>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fu">## Background on the AMR example data set</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>The AMR package contains a data set called **example_isolates_unclean** which is representative of data extracted directly from microbiology testing laboratories. </span></code></pre>
 </div>
 <p>Then click the ‘Render’ button on the toolbar to generate an html
 document (webpage).</p>
@@ -804,10 +804,10 @@ document (webpage).</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="a-bit-more-markdown">A bit more Markdown<a class="anchor" aria-label="anchor" href="#a-bit-more-markdown"></a></h2>
-<hr class="half-width"><p>You can make a hyperlink like this:
-<code>[Carpentries Home Page](https://carpentries.org/)</code>.</p>
-<p>You can include an image file like this:
-<code>![The Carpentries Logo](https://github.com/carpentries/logo/blob/main/TheCarpentries.png)</code></p>
+<hr class="half-width"><p>You can make a hyperlink like this:</p>
+<pre><code>[The AMR Package for R](https://amr-for-r.org/)</code></pre>
+<p>You can include an image file like this:</p>
+<pre><code>![AMR for R logo](https://amr-for-r.org/logo.svg)</code></pre>
 <p>You can do subscripts (e.g., F<sub>2</sub>) with <code>F~2~</code>
 and superscripts (e.g., F<sup>2</sup>) with <code>F^2^</code>.</p>
 <p>If you know how to write equations in <a href="https://www.latex-project.org/" class="external-link">LaTeX</a>, you can use
@@ -825,9 +825,15 @@ RStudio.</p>
 code. When processed, the R code will be executed; if they produce
 figures, the figures will be inserted in the final document.</p>
 <p>The main code chunks look like this:</p>
-<pre><code>```{r}
-#| label: load_data
-gapminder &lt;- read.csv("gapminder.csv")
+<pre><code># Loading the required R packages:
+```{r}
+#| warning: false
+library(dplyr)
+library(ggplot2)
+library(AMR) # load the AMR package
+
+# (if not yet installed, install with:)
+# install.packages(c("dplyr", "ggplot2", "AMR"))
 ```</code></pre>
 <p>That is, you place a chunk of R code between <code>```{r}</code> and
 <code>```</code>. You should give each chunk a unique name, by inserting
@@ -849,8 +855,12 @@ quickly in RStudio using the shortcuts
 <div class="accordion-body">
 <p>In R Markdown, you add chunk labels by including them within the
 <code>```{r}</code> line like so:</p>
-<pre><code>```{r label_data}
-gapminder &lt;- read.csv("gapminder.csv")
+<p>The AMR package contains a data set called example_isolates_unclean,
+which is representative of data extracted directly from microbiology
+testing laboratories:</p>
+<pre><code># Let's have a look at the example_isolates_unclean data set:
+```{r}
+head(example_isolates_unclean)
 ```</code></pre>
 </div>
 </div>
@@ -864,10 +874,19 @@ gapminder &lt;- read.csv("gapminder.csv")
 <div id="challenge-2" class="callout-inner">
 <h3 class="callout-title">Challenge 2</h3>
 <div class="callout-content">
+<p>In this report we will take this uncleaned data set and prepare it
+ready for analysis, we would like the microorganism column to contain
+valid, up-to-date taxonomy, and the antibiotic columns to be cleaned to
+contain SIR values = Susceptible (standard dose effective), Intermediate
+(or Susceptible, Increased exposure; requires higher doses), or
+Resistant (not effective even at higher doses).</p>
 <p>Add code chunks to:</p>
-<ul><li>Load the ggplot2 package</li>
-<li>Read the gapminder data</li>
-<li>Create a plot</li>
+<ul><li>Use chunk for the preparation of uncleaned antimicrobial data
+sets</li>
+<li>Use the AMR <code>as.mo()</code> function in AMR to transform
+arbitrary microorganism names or codes to current taxonomy codes</li>
+<li>Use this function to clean up the bacteria column in our data
+set:</li>
 </ul></div>
 </div>
 </div>
@@ -880,17 +899,52 @@ gapminder &lt;- read.csv("gapminder.csv")
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<pre><code>```{r}
-#| label: libraries
-library(ggplot2)
+<p>The <code>as.mo()</code> function in AMR can transform arbitrary
+microorganism names or codes to current taxonomy codes, this function
+supports different types of input for example:</p>
+<pre><code>## Taxonomy of microorganisms
+```{r}
+as.mo("Klebsiella pneumoniae")
 ```</code></pre>
 <pre><code>```{r}
-#| label: load-gapminder-data
-gapminder &lt;- read.csv("gapminder.csv")
+as.mo("K. pneumoniae")
 ```</code></pre>
 <pre><code>```{r}
-#| label: make-plot
-plot(lifeExp ~ year, data = gapminder)
+as.mo("KLEPNE")
+```</code></pre>
+<pre><code>```{r}
+as.mo("KLPN")
+```</code></pre>
+<p>The first character in output codes denote their taxonomic kingdom,
+such as Bacteria (B), Fungi (F), and Protozoa (P).</p>
+<p>The AMR package also contain functions to directly retrieve taxonomic
+properties, such as the name, genus, species, family, order, and even
+Gram-stain:</p>
+<pre><code>```{r}
+mo_family("K. pneumoniae")
+```</code></pre>
+<pre><code>```{r}
+mo_genus("K. pneumoniae")
+```</code></pre>
+<pre><code>```{r}
+mo_species("K. pneumoniae")
+```</code></pre>
+<pre><code>```{r}
+mo_gramstain("Klebsiella pneumoniae")
+```</code></pre>
+<pre><code>```{r}
+mo_snomed("K. pneumoniae")
+```</code></pre>
+<p>This function can be used to clean up the bacteria column in our data
+set:</p>
+<pre><code>```{r}
+AMR_data_unclean &lt;- example_isolates_unclean
+AMR_data_unclean$bacteria &lt;- as.mo(AMR_data_unclean$bacteria, info = TRUE)
+
+#ℹ Microorganism translation was uncertain for "E. coli" (assumed Escherichia coli), "S. aureus" (assumed Staphylococcus aureus), and "S. pneumoniae" (assumed Streptococcus pneumoniae). Run mo_uncertainties() to review these uncertainties, or use add_custom_microorganisms() to add custom entries.</code></pre>
+<p>We can run this code to check on the taxonomic code translations:</p>
+<pre><code>```{r}
+mo_uncertainties()
 ```</code></pre>
 </div>
 </div>
@@ -922,46 +976,56 @@ the size of the figures produced (in inches).</li>
 <pre><code>```{r}
 #| label: load_libraries
 #| echo: false
-#| message: false
+#| warning: false
 library(dplyr)
 library(ggplot2)
+library(AMR)
 ```</code></pre>
 <p>Often there will be particular options that you’ll want to use
 repeatedly; for this, you can set <em>global</em> chunk options in the
 files YAML header like so:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="co">...</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="co">knitr:</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">  opts_chunk:</span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">    message: false</span></span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co">    warning: false</span></span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">    echo: false</span></span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">    results: "hide"</span></span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">    fig.path: "Figs/</span></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">    fig.width: 11</span></span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">---</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="co">...</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="co">knitr:</span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="co">  opts_chunk:</span></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="co">    message: false</span></span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a><span class="co">    warning: false</span></span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a><span class="co">    echo: false</span></span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a><span class="co">    results: "hide"</span></span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a><span class="co">    fig.path: "Figs/"</span></span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a><span class="co">    fig.width: 11</span></span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a><span class="co">---</span></span></code></pre>
 </div>
-<p>The <code>fig.path</code> option defines where the figures will be
-saved. The <code>/</code> here is really important; without it, the
-figures would be saved in the standard place but just with names that
-begin with <code>Figs</code>.</p>
+<p>The <code>figures</code> block option defines the path where the
+figures will be saved. The <code>/</code> after Figs here is really
+important; without it, the figures would be saved in the standard place
+but just with names that begin with <code>Figs</code>.</p>
 <p>If you have multiple R Markdown files in a common directory, you
 might want to use <code>fig.path</code> to define separate prefixes for
 the figure file names, like <code>fig.path="Figs/cleaning-"</code> and
 <code>fig.path="Figs/analysis-"</code>.</p>
-<div id="challenge-3" class="callout challenge">
+<p>You can review all of the <code>R</code> chunk options by navigating
+to the “R Markdown Cheat Sheet” under the “Cheatsheets” section of the
+“Help” field in the toolbar at the top of RStudio.</p>
+<div id="cleaning-antibiotic-lab-test-results" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="challenge-3" class="callout-inner">
-<h3 class="callout-title">Challenge 3</h3>
+<div id="cleaning-antibiotic-lab-test-results" class="callout-inner">
+<h3 class="callout-title">Cleaning antibiotic lab test results</h3>
 <div class="callout-content">
-<p>Use chunk options to control the size of a figure and to hide the
-code.</p>
+<p>The AMR package comes with three new data types to work with such
+test results: <code>mic</code> for minimal inhibitory concentrations
+(MIC), <code>disk</code> for disk diffusion diameters, and
+<code>sir</code> for SIR data that have been interpreted already. This
+package can also determine SIR values based on MIC or disk diffusion
+values.</p>
+<p>This data set just contains SIR data and we want to clean the SIR
+columns in our data using dplyr:</p>
 </div>
 </div>
 </div>
@@ -974,39 +1038,44 @@ code.</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<pre><code>```{r}
-#| label: faitful-plot
-#| echo: false
-#| fig.width: 3
-plot(faitful)
+<pre><code># Cleaning antibiotic lab test results
+```{r}
+AMR_data_clean &lt;- AMR_data_unclean %&gt;%
+  mutate_if(is_sir_eligible, as.sir)
+
+# mutate_if applies a function to all columns that meet a condition
+# is_sir_eligible function returns TRUE if a column contains data that can be interpreted as antimicrobial susceptibility test results (e.g., MIC values, disk diffusion diameters, or categorical "S", "I", "R" results
+# as.sir function then takes those eligible columns and converts their values into the "sir" class (standardized "S", "I", "R" format).
+
+AMR_data_clean
 ```</code></pre>
 </div>
 </div>
 </div>
 </div>
-<p>You can review all of the <code>R</code> chunk options by navigating
-to the “R Markdown Cheat Sheet” under the “Cheatsheets” section of the
-“Help” field in the toolbar at the top of RStudio.</p>
-</section><section><h2 class="section-heading" id="inline-r-code">Inline R code<a class="anchor" aria-label="anchor" href="#inline-r-code"></a></h2>
-<hr class="half-width"><p>You can make <em>every</em> number in your report reproducible. Use
-<code>`r</code> and <code>`</code> for an in-line code chunk, like so:
-<code>``r "r round(some_value, 2)"``</code>. The code will be executed
-and replaced with the <em>value</em> of the result.</p>
-<p>Don’t let these in-line chunks get split across lines.</p>
-<p>Perhaps precede the paragraph with a larger code chunk that does
-calculations and defines variables, with <code>include=FALSE</code> for
-that larger chunk (which is the same as <code>echo=FALSE</code> and
-<code>results="hide"</code>).</p>
-<div id="challenge-4" class="callout challenge">
+<div id="data-inclusion---first-isolates" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="challenge-4" class="callout-inner">
-<h3 class="callout-title">Challenge 4</h3>
+<div id="data-inclusion---first-isolates" class="callout-inner">
+<h3 class="callout-title">Data inclusion - first isolates</h3>
 <div class="callout-content">
-<p>Try out a bit of in-line R code.</p>
-</div>
+<ul><li>For analysis of antimicrobial resistance, only the first isolate of
+every patient per episode should be included (Hindler et al., Clin
+Infect Dis. 2007).</li>
+<li>If this wasn’t done we would get an overestimate or underestimate of
+the resistance of an antibiotic.</li>
+<li>For example, if a patient was admitted with an MRSA infection and it
+was found in five different blood cultures the following weeks . The
+resistance percentage of oxacillin of all isolates would be
+overestimated, because you included this MRSA more than once. It would
+clearly be selection bias.</li>
+<li>The <code>AMR</code> package includes this methodology with the <a href="https://amr-for-r.org/reference/first_isolate.html" class="external-link"><code>first_isolate()</code></a> function
+and is able to apply the four different methods as defined by <a href="https://academic.oup.com/cid/article/44/6/867/364325" class="external-link">Hindler <em>et
+al.</em> in 2007</a>: phenotype-based, episode-based, patient-based,
+isolate-based. </li>
+</ul></div>
 </div>
 </div>
 <div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
@@ -1018,13 +1087,164 @@ that larger chunk (which is the same as <code>echo=FALSE</code> and
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
-<p>Here’s some inline code to determine that 2 + 2 =
-<code>r 2+2</code>:</p>
-<pre><code>Here's some inline code to determine that 2 + 2 = `r 2+2`:</code></pre>
+<pre><code># Data inclusion - first isolates
+```{r}
+AMR_data_clean &lt;- AMR_data_clean %&gt;%
+  mutate(first = first_isolate(info = TRUE))
+```</code></pre>
+<p>This shows that only 91% of the isoaltes witin this data set are
+suitable for resistance analysis! We can now filter using the function
+<code>filter_first_isolate()</code></p>
+<pre><code>```{r}
+AMR_data_clean_1st &lt;- AMR_data_clean %&gt;%
+  filter_first_isolate()
+
+AMR_data_clean_1st
+```
+We now end up with a cleaned filtered data set with 2,724 isolates for analysis
+</code></pre>
 </div>
 </div>
 </div>
 </div>
+<div id="data-anlysis-with-the-amr-package" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="data-anlysis-with-the-amr-package" class="callout-inner">
+<h3 class="callout-title">Data anlysis with the AMR package</h3>
+<div class="callout-content">
+<ul><li>Use the base R <code>summary()</code> function to get an overview of
+the cleaned and filtered data set and function <code>sapply</code> to
+get the number of unique values per column.</li>
+<li>Report how the species are distributed in the dataset using the
+<code>count()</code> funtion.</li>
+<li>Select and filter with antibiotic selectors.</li>
+</ul></div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5">
+  Solution to Challenge 5
+  </h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div class="accordion-body">
+<p>Use of the <code>summary()</code> and <code>sapply</code>
+functions:</p>
+<pre><code>```{r}
+summary(AMR_data_clean_1st)
+
+sapply(AMR_data_clean_1st, n_distinct)
+```</code></pre>
+<p>Use of the <code>count()</code> function</p>
+<pre><code>```{r}
+AMR_data_clean_1st %&gt;%
+  count(mo_name(bacteria), sort = TRUE)
+```</code></pre>
+<p>We can select/filter columns based on the antibiotic class:</p>
+<pre><code>```{r}
+AMR_data_clean_1st %&gt;%
+  select(date, aminoglycosides())
+```</code></pre>
+<pre><code>```{r}
+AMR_data_clean_1st %&gt;%
+  select(bacteria, betalactams())
+```</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="resistance-percentages">Resistance percentages<a class="anchor" aria-label="anchor" href="#resistance-percentages"></a></h2>
+<hr class="half-width"><p>The functions resistance() and susceptibility() can be used to
+calculate antimicrobial resistance or susceptibility. For more specific
+analyses, the functions proportion_S(), proportion_SI(), proportion_I(),
+proportion_IR() and proportion_R() can be used to determine the
+proportion of a specific antimicrobial outcome.</p>
+<p>As per the EUCAST guideline of 2019, we calculate resistance as the
+proportion of R (proportion_R(), equal to resistance()) and
+susceptibility as the proportion of S and I (proportion_SI(), equal to
+susceptibility()).These functions can be used on their own:</p>
+<pre><code>```{r}
+AMR_data_clean_1st %&gt;% resistance(AMX)
+```</code></pre>
+<div id="challenge-6" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-6" class="callout-inner">
+<h3 class="callout-title">Challenge 6</h3>
+<div class="callout-content">
+<ul><li>Use <code>group_by()</code> and <code>summarise()</code> from dplyr
+together with the AMR <code>resistance()</code> function to determine
+the proportion of isolates that are resistant to amoxicillin for each
+hospital.</li>
+<li>Use the <code>select()</code> and <code>summarise()</code> functions
+together with the AMR <code>resistance()</code> function to determine
+the resistance proportions by antibiotic.</li>
+<li>Use <code>group_by()</code> and <code>summarise()</code> functions
+together with the AMR <code>resistance()</code> function to detmine the
+resistance proportions by antibiotic and grouped by bacteria.</li>
+</ul></div>
+</div>
+</div>
+<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
+  <h4 class="accordion-header" id="headingSolution6">
+  Solution to Challenge 6
+  </h4>
+</button>
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div class="accordion-body">
+<p>The proportion of isolates that are resistant to amoxicillin for each
+hospital:</p>
+<pre><code>```{r}
+AMR_data_clean_1st %&gt;%
+  group_by(hospital) %&gt;%
+  summarise(amoxicillin = resistance(AMX))
+```</code></pre>
+<p>The resistance proportions by antibiotic:</p>
+<pre><code>```{r}
+AMR_data_clean_1st %&gt;%
+  select(AMX, AMC, CIP, GEN) %&gt;%
+  summarise(across(everything(), resistance))
+
+```</code></pre>
+<p>The resistance proportions by antibiotic and grouped by bacteria:</p>
+<pre><code>```{r}
+AMR_data_clean_1st %&gt;%
+  group_by(bacteria) %&gt;%
+  summarise(across(c(AMX, AMC, CIP, GEN), resistance))
+
+```</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="inline-r-code">Inline R code<a class="anchor" aria-label="anchor" href="#inline-r-code"></a></h2>
+<hr class="half-width"><p>You can make <em>every</em> number in your report reproducible. Use
+<code>`r</code> and <code>`</code> for an in-line code chunk.</p>
+<p>For example we can add in the following for our report:</p>
+<pre><code>Using the AMR package example dataset, we analysed `r nrow(AMR_data_clean_1st)` isolates from `r length(unique(AMR_data_clean_1st$bacteria))` different bacterial species.
+
+The overall resistance to ciprofloxacin was `r round(resistance(AMR_data_clean_1st$CIP) * 100, 1)`%.
+
+The most common species was `r AMR_data_clean_1st %&gt;% count(bacteria, sort = TRUE) %&gt;% slice(1) %&gt;% pull(bacteria)`.</code></pre>
+</section><section><h2 class="section-heading" id="inline-example-explained">Inline example explained:<a class="anchor" aria-label="anchor" href="#inline-example-explained"></a></h2>
+<hr class="half-width"><p>r nrow(AMR_data_clean_1st) = total number of isolates</p>
+<p>r length(unique(AMR_data_clean_1st$bacteria)) = number of species</p>
+<p>r round(resistance(AMR_data_clean_1st$CIP) * 100, 1) = calculates the
+resistance % to CIP</p>
+<p>r … %&gt;% count(bacteria, sort = TRUE) = outputs the most frequent
+species</p>
+<p>The code will be executed and replaced with the <em>value</em> of the
+result.</p>
+<p>Don’t let these in-line chunks get split across lines.</p>
 </section><section><h2 class="section-heading" id="other-output-options">Other output options<a class="anchor" aria-label="anchor" href="#other-output-options"></a></h2>
 <hr class="half-width"><p>You can also convert R Markdown to a PDF or a Word document. Change
 the <code>format:</code> field in the YAML header to <code>pdf</code> or
@@ -1049,59 +1269,73 @@ show the code in some reports but not in others</li>
 follows the same syntax) can be done by adding the <code>params</code>
 field to they YAML header. This field can hold a list of multiple
 parameters.</p>
-<p>For example, imagine we want to analyse the life expectancy of
-different countries, using the <code>gapminder</code> dataset, but we
-want a separate report for each country. To achieve this, we set the
-YAML header for our Quarto document as follows:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<p>For example, imagine we want to analyse the resistance distribution
+using the our <code>AMR_data_clean_1st</code> dataset, but we want a
+separate report for each antibiotic. To achieve this, we set the YAML
+header for our Quarto document, so if we wanted to calculate the
+resistance distribution for Ciprofloxacin, we would do as follows:</p>
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Life Expectancy Report"</span></span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">"Afghanistan"</span></span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="pp">---</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Data analysis with AMR package"</span></span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a><span class="at">  </span><span class="fu">antibiotic</span><span class="kw">:</span><span class="at"> </span><span class="st">"CIP"</span></span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a><span class="pp">---</span></span></code></pre>
 </div>
 <p>We can then reference this parameter anywhere in the R code in our
-report by accessing the <code>params</code> object. To calculate the
-life expectancy for just the country defined by the <code>params</code>,
-we can do:</p>
+report by accessing the <code>params</code> object. To visualise the
+S/I/R distribution for just the antibiotic defined by the
+<code>params</code>, we can do:</p>
 <pre><code>```{r}
-library(tidyverse)
-library(gapminder)
+AMR_data_clean_1st %&gt;%
+  ggplot(aes_string(x = params$antibiotic, fill = params$antibiotic)) +
+  geom_bar() +
+  scale_fill_sir() +
+  labs(title = paste(params$antibiotic, "S/I/R distribution"), x = "Interpretation", y = "Count")
+
 ```
+</code></pre>
+<p>This code also uses <code>params</code> to set the plot title</p>
+<div id="challenge-7" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-7" class="callout-inner">
+<h3 class="callout-title">Challenge 7</h3>
+<div class="callout-content">
+<p>Plot the S/I/R distribution of Ciprofloxacin by hospital using
+<code>params</code></p>
+</div>
+</div>
+</div>
+<div id="accordionSolution7" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
+  <h4 class="accordion-header" id="headingSolution7">
+  Solution to Challenge 7
+  </h4>
+</button>
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div class="accordion-body">
+<pre><code>```{r}
+AMR_data_clean_1st %&gt;%
+  ggplot(aes_string(x = "hospital", fill = params$antibiotic)) +
+  geom_bar(position = "fill") +
+  scale_fill_sir() +
+  labs(title = paste(params$antibiotic, "S/I/R distribution by hospital"),
+    x = "Hospital",
+    y = "Proportion"
+  )
 
-```{r}
-life_expectancy &lt;-
-  gapminder |&gt;
-  select(country, year, lifeExp) |&gt;
-  filter(country == params$country)
 ```</code></pre>
-<p>The last line in the code chunk above uses the <code>params</code>
-object to filter the <code>gapminder</code> dataset. Note that we can
-also <code>params</code> in inline R code snippets. So we can generate a
-heading that will change based on the country parameter:</p>
-<pre><code>## Life Expectancy in `r params$country`
-
-```{r}
-#| label: !expr paste0("life-expectancy-plot", params$country)
-ggplot(life_expectancy, aes(year, lifeExp)) +
-  geom_line() +
-  theme_minimal()
-```</code></pre>
-<p>In fact, we can even use this in the main document title in the YAML
-header, as it also accepts R code expressions:</p>
-<div class="codewrapper sourceCode" id="cb21">
-<h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Life Expectancy Report for `r params$country`"</span></span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co">...</span></span></code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="section level3">
@@ -1113,43 +1347,39 @@ itself. The real power of parameterised reports is when we render them
 package</a>, which provides the <code>quarto_render()</code> function.
 This function takes a Quarto file and any execution parameters as
 input.</p>
-<p>So to generate the life expectancy report for Afghanistan, we can
-write a script with the following code:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<p>So to generate the resistance distributions report for Gentamicin, we
+can write a script with the following code:</p>
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># render-report.R</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">quarto</span><span class="op">)</span></span>
-<span><span class="fu">quarto_render</span><span class="op">(</span><span class="st">"life_expectancy_report.qmd"</span>, execute_params <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>country <span class="op">=</span> <span class="st">"Afghanistan"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">quarto_render</span><span class="op">(</span><span class="st">"AMR_data_analysis.qmd"</span>, execute_params <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>antibiotic <span class="op">=</span> <span class="st">"GEN"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>And now for the real magic, we can modify our script to render a
-report for a list of countries of interest from the
-<code>gapminder</code> dataset.</p>
-<div class="codewrapper sourceCode" id="cb23">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># render-all-reports.R</span></span>
+report for a list of antibiotics from the AMR dataset:</p>
+<pre><code><span><span class="co"># render-all-reports.R</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">quarto</span><span class="op">)</span></span>
-<span><span class="va">countries</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Belgium"</span>, <span class="st">"India"</span>, <span class="st">"United Kingdom"</span><span class="op">)</span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">country</span> <span class="kw">in</span> <span class="va">countries</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span><span class="va">antibiotics</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"AMC"</span>, <span class="st">"CIP"</span>, <span class="st">"GEN"</span>, <span class="st">"AMX"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">ab</span> <span class="kw">in</span> <span class="va">antibiotics</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu">quarto_render</span><span class="op">(</span></span>
-<span>    input <span class="op">=</span> <span class="st">"life_expectancy_report.qmd"</span>,</span>
-<span>    output_file <span class="op">=</span> <span class="fu">paste0</span><span class="op">(</span><span class="st">"life_expectancy_"</span>, <span class="va">country</span>, <span class="st">".html"</span><span class="op">)</span>,</span>
-<span>    execute_params <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>country <span class="op">=</span> <span class="va">country</span><span class="op">)</span></span>
+<span>    input <span class="op">=</span> <span class="st">"AMR_data_analysis.qmd"</span>,</span>
+<span>    output_file <span class="op">=</span> <span class="fu">paste0</span><span class="op">(</span><span class="st">"AMR_"</span>, <span class="va">ab</span>, <span class="st">".html"</span><span class="op">)</span>,</span>
+<span>    execute_params <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>antibiotic <span class="op">=</span> <span class="va">ab</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre>
-</div>
 <p>After running this script, we should have the following files in our
 working directory:</p>
 <pre><code>.
-├── life_expectancy_Afghanistan.html
-├── life_expectancy_Belgium.html
-├── life_expectancy_India.html
-├── life_expectancy_United Kingdom.html
-├── life_expectancy_report.qmd
-└── life_expectancy_report_files</code></pre>
+├── AMR_AMX.html
+├── AMR_GEN.html
+├── AMR_CIP.html
+├── AMR_AMC.html
+├── AMR_data_analysis.qmd
+</code></pre>
 <div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1163,27 +1393,94 @@ correct output files, you might notice that each report will show the
 the Quarto R package.</p>
 <p>With R Markdown we don’t have this issue, to render we would use the
 following code:</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu">render</span><span class="op">(</span></span>
-<span>  input <span class="op">=</span> <span class="st">"life_expectency_report.Rmd"</span>,</span>
-<span>  output_file <span class="op">=</span> <span class="fu">paste0</span><span class="op">(</span><span class="st">"life_expectancy_"</span>, <span class="va">country</span>, <span class="st">".html"</span><span class="op">)</span>,</span>
-<span>  params <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>country <span class="op">=</span> <span class="va">country</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">rmarkdown</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">antibiotics</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"AMC"</span>, <span class="st">"CIP"</span>, <span class="st">"GEN"</span>, <span class="st">"AMX"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">ab</span> <span class="kw">in</span> <span class="va">antibiotics</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu">render</span><span class="op">(</span></span>
+<span>    input <span class="op">=</span> <span class="st">"AMR_data_analysis.Rmd"</span>,</span>
+<span>    output_file <span class="op">=</span> <span class="fu">paste0</span><span class="op">(</span><span class="st">"AMR_"</span>, <span class="va">ab</span>, <span class="st">".html"</span><span class="op">)</span>,</span>
+<span>    params <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>antibiotic <span class="op">=</span> <span class="va">ab</span><span class="op">)</span>,</span>
+<span>    envir <span class="op">=</span> <span class="fu">new.env</span><span class="op">(</span><span class="op">)</span>  <span class="co"># avoids parameter bleed between runs</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="tip-creating-pdf-documents" class="callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="tip-creating-pdf-documents" class="callout-inner">
-<h3 class="callout-title">Tip: Creating PDF documents</h3>
+<div class="callout-inner">
 <div class="callout-content">
+<div id="challenge-8" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-8" class="callout-inner">
+<h3 class="callout-title">Challenge 8</h3>
+<div class="callout-content">
+<p>Use <code>params</code> and the AMR package function
+<code>resistance_predict</code> to predict the resistance trends for one
+antibiotic</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution8" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
+  <h4 class="accordion-header" id="headingSolution8">
+  Solution to Challenge 8
+  </h4>
+</button>
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div class="accordion-body">
+<pre><code>
+```{r}
+params$antibiotic_trend &lt;- resistance_predict(
+  x = AMR_data_clean_1st,   # &lt;- your dataset
+  col_ab = params$antibiotic, # column with S/I/R
+  col_date = "date",        # column with Date
+  model = "binomial",       # logistic regression
+  year_max = 2025           # optional
+)
+
+# plot for one antibiotic
+
+ggplot(params$antibiotic_trend, aes(x = year, y = observed)) +
+  geom_point() +
+  geom_line(aes(y = estimated), color = "purple") +
+  geom_ribbon(aes(ymin = se_min, ymax = se_max), alpha = 0.2, fill = "purple") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = paste(params$antibiotic, "Resistance Trend"),
+    x = "Year",
+    y = "Resistance (%)"
+  ) +
+  theme_minimal()
+
+```</code></pre>
+<pre><code>```r
+In an R Script, use to change antibiotic:
+# render-report.R
+library(quarto)
+quarto_render("AMR_data_analysis.qmd", execute_params = list(antibiotic = "GEN"))
+
+```</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="tip-creating-pdf-documents">Tip: Creating PDF documents<a class="anchor" aria-label="anchor" href="#tip-creating-pdf-documents"></a></h2>
 <p>Creating .pdf documents may require installation of some extra
 software. The R package <code>tinytex</code> provides some tools to help
 make this process easier for R users. With <code>tinytex</code>
@@ -1193,6 +1490,7 @@ knit to pdf <code>tinytex</code> will automatically detect and install
 any additional LaTeX packages that are needed to produce the pdf
 document. Visit the <a href="https://yihui.org/tinytex/" class="external-link">tinytex
 website</a> for more information.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1327,8 +1625,8 @@ formats.</li>
   "url": "https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/22-quarto.html",
   "identifier": "https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/22-quarto.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2025-09-16",
-  "datePublished": "2025-09-30"
+  "dateModified": "2025-10-01",
+  "datePublished": "2025-10-01"
 }
 
   </script><script>
