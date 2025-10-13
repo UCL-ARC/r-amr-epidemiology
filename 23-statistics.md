@@ -79,7 +79,7 @@ ggplot(hgtwgt_survey, aes(x = weight.kg.)) +
 ```
 
 ``` output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 ``` warning
@@ -102,7 +102,7 @@ ggplot(hgtwgt_survey, aes(x = log(weight.kg.))) +
 ```
 
 ``` output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 ``` warning
@@ -155,7 +155,7 @@ ggplot(dummy_1, aes(x = dummy_1)) +
 ```
 
 ``` output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="fig/23-statistics-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
@@ -169,7 +169,7 @@ ggplot(dummy_2, aes(x = dummy_2)) +
 ```
 
 ``` output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="fig/23-statistics-rendered-unnamed-chunk-4-2.png" style="display: block; margin: auto;" />
