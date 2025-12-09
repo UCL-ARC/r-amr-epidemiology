@@ -47,6 +47,7 @@
           </ul></li>
       </div>
 
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Instructor View <i data-feather="chevron-down"></i>
@@ -781,7 +782,7 @@ sections, some italicized text, and an itemized list).</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In RStudio, select
 <code>File &gt; New file &gt; Quarto Document...</code></p>
@@ -853,7 +854,7 @@ quickly in RStudio using the shortcuts
   Code chunk options in R Markdown
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>In R Markdown, you add chunk labels by including them within the
 <code>```{r}</code> line like so:</p>
@@ -899,7 +900,7 @@ set:</li>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The <code>as.mo()</code> function in AMR can transform arbitrary
 microorganism names or codes to current taxonomy codes, this function
@@ -1038,7 +1039,7 @@ columns in our data using dplyr:</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <pre><code># Cleaning antibiotic lab test results
 ```{r}
@@ -1087,7 +1088,7 @@ isolate-based. </li>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <pre><code># Data inclusion - first isolates
 ```{r}
@@ -1133,7 +1134,7 @@ get the number of unique values per column.</li>
   Solution to Challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Use of the <code>summary()</code> and <code>sapply</code>
 functions:</p>
@@ -1201,7 +1202,7 @@ resistance proportions by antibiotic and grouped by bacteria.</li>
   Solution to Challenge 6
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>The proportion of isolates that are resistant to amoxicillin for each
 hospital:</p>
@@ -1322,7 +1323,7 @@ AMR_data_clean_1st %&gt;%
   Solution to Challenge 7
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <pre><code>```{r}
 AMR_data_clean_1st %&gt;%
@@ -1443,7 +1444,7 @@ antibiotic</p>
   Solution to Challenge 8
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <pre><code>
 ```{r}
@@ -1598,15 +1599,17 @@ formats.</li>
 	
         | <a href="https://github.com/UCL-ARC/r-amr-epidemiology-ni/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/UCL-ARC/r-amr-epidemiology-ni/" class="external-link">Source</a></p>
-				<p><a href="https://github.com/UCL-ARC/r-amr-epidemiology-ni/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:ARC.Education@ucl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
-			</div>
-			<div class="col-md-6">
+        <p>
+        <a href="https://github.com/UCL-ARC/r-amr-epidemiology-ni/blob/main/" class="external-link">Cite</a>
+        | <a href="mailto:ARC.Education@ucl.ac.uk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
+		</div>
+		<div class="col-md-6">
 
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.17.1" class="external-link">sandpaper (0.17.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.7" class="external-link">varnish (1.0.7)</a></p>
-			</div>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.17.3" class="external-link">sandpaper (0.17.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
 		<a href="#top">
@@ -1628,7 +1631,7 @@ formats.</li>
   "identifier": "https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/instructor/22-quarto.html",
   "dateCreated": "2015-04-18",
   "dateModified": "2025-11-11",
-  "datePublished": "2025-12-02"
+  "datePublished": "2025-12-09"
 }
 
   </script><script>
