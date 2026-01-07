@@ -643,7 +643,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x55cb21ac8fd0>
+<bytecode: 0x55c60c8dbfd0>
 <environment: namespace:base>
 ```
 
@@ -695,7 +695,8 @@ rm(list <- ls())
 ```
 
 ``` error
-Error in rm(list <- ls()): ... must contain names or character strings
+Error in `rm()`:
+! ... must contain names or character strings
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout

@@ -58,7 +58,7 @@ model1 <- lm(health_london_rank ~ livingEnv_london_rank + barriers_london_rank +
 ols_plot_resid_qq(model1)
 ```
 
-<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" />
 
 ### Residual Normality Test
 Test for detecting violation of normality assumption.
@@ -102,7 +102,7 @@ Characteristics of a well behaved residual vs fitted plot:
 ols_plot_resid_fit(model1)
 ```
 
-<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" />
 
 ### Residual Histogram
 Additionally, we can create a histogram of residuals for detecting violation of normality assumption.
@@ -112,7 +112,7 @@ Additionally, we can create a histogram of residuals for detecting violation of 
 ols_plot_resid_hist(model1)
 ```
 
-<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-5-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Additional Diagnostics
 In addition the residual diagnostics, we can also assess our model for Heteroskedasticity, Multicollinearity and any Influential/High leverage points.
@@ -160,7 +160,7 @@ linear (t-tests), generalized linear models (normal tests), and linear mixed mod
 qqPlot(model1, id.n = 2)
 ```
 
-<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` output
 [1] 4612 4721
@@ -198,7 +198,7 @@ Vertical reference lines are drawn at twice and three times the average hat valu
 influencePlot(model1)
 ```
 
-<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` output
         StudRes         Hat        CookD
@@ -219,7 +219,7 @@ Influence points can be further explored with an Influence Index Plot which prov
 influenceIndexPlot(model1)
 ```
 
-<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="fig/25-linreg-diagnostics-rendered-unnamed-chunk-10-1.png" alt="" style="display: block; margin: auto;" />
 
 If an observation is influential then that observation can change the fit of the linear model.
 

@@ -208,6 +208,6 @@ You would need to choose the most appropriate for your needs.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-<img src="fig/best-practices-R-rendered-pressure-1.png" style="display: block; margin: auto;" />
+<img src="fig/best-practices-R-rendered-pressure-1.png" alt="" style="display: block; margin: auto;" />
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

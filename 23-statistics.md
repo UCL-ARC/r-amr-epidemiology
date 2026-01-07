@@ -87,7 +87,7 @@ Warning: Removed 80 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/23-statistics-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="fig/23-statistics-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" />
 
 What is the distribution of this data?
 
@@ -110,7 +110,7 @@ Warning: Removed 80 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/23-statistics-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/23-statistics-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 
 What is the distribution of this data?
 
@@ -158,7 +158,7 @@ ggplot(dummy_1, aes(x = dummy_1)) +
 `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
-<img src="fig/23-statistics-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="fig/23-statistics-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 # larger standard deviation
@@ -172,7 +172,7 @@ ggplot(dummy_2, aes(x = dummy_2)) +
 `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
-<img src="fig/23-statistics-rendered-unnamed-chunk-4-2.png" style="display: block; margin: auto;" />
+<img src="fig/23-statistics-rendered-unnamed-chunk-4-2.png" alt="" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::: instructor
 Get them to plot the graphs. Explain that we are generating random data from different distributions and plotting them.
@@ -524,7 +524,7 @@ Warning: Removed 155 rows containing missing values or values outside the scale 
 (`geom_point()`).
 ```
 
-<img src="fig/23-statistics-rendered-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
+<img src="fig/23-statistics-rendered-unnamed-chunk-15-1.png" alt="" style="display: block; margin: auto;" />
 
 Having decided that a further investigation of this relationship is worthwhile, we can create a linear model with the function `lm()`.
 

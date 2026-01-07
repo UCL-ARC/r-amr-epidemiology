@@ -115,7 +115,7 @@ ageHisto <- amrData %>%
 ageHisto
 ```
 
-<img src="fig/26-log-regression-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="fig/26-log-regression-rendered-unnamed-chunk-6-1.png" alt="" style="display: block; margin: auto;" />
 We can also look at where the specimens were processed:
 
 ``` r
@@ -251,7 +251,7 @@ ggplot(linearity_data, aes(x = age, y = logit.use)) +
 `geom_smooth()` using formula = 'y ~ x'
 ```
 
-<img src="fig/26-log-regression-rendered-unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="fig/26-log-regression-rendered-unnamed-chunk-12-1.png" alt="" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
