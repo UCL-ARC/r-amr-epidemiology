@@ -6,21 +6,27 @@
 <title>Introduction to R, databases and reproducibility for AMR Epidemiologists: All in One View</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/themetoggle.js"></script><link rel="stylesheet" type="text/css" href="assets/styles.css">
-<script src="assets/scripts.js" type="text/javascript"></script><!-- mathjax --><script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      config: ["MMLorHTML.js"],
-      jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML", "output/PreviewHTML"],
-      extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js", "fast-preview.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
-      TeX: {
-        extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
-      },
-      tex2jax: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [ ['$$','$$'], ['\\[', '\\]'] ],
-        processEscapes: true
-      }
-    });
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="favicons/swc/apple-touch-icon.png">
+<script src="assets/scripts.js" type="text/javascript"></script><!-- mathjax --><!-- NOTE: https://docs.mathjax.org/en/latest/output/mathml.html#mathml-support --><!-- Changes from V2 to V4: https://mathjax.github.io/MathJax-demos-web/convert-configuration/convert-configuration.html
+        Jax output/NativeMML is not yet implemented
+        Jax output/PreviewHTML is not yet implemented
+        Extension fast-preview is not yet implemented (but may be in a future release)
+    --><script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [ ['$$','$$'], ['\\[', '\\]'] ],
+            processEscapes: true,
+            packages: ['base', 'ams', 'noerrors', 'noundefined']
+        },
+        options: {
+            ignoreHtmlClass: 'tex2jax_ignore',
+            processHtmlClass: 'tex2jax_process'
+        },
+        loader: {
+            load: ['a11y/assistive-mml', '[tex]/noerrors']
+        }
+    };
+    </script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script><!-- Responsive Favicon for The Carpentries --><link rel="apple-touch-icon" sizes="180x180" href="favicons/swc/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicons/swc/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicons/swc/favicon-16x16.png">
 <link rel="manifest" href="favicons/swc/site.webmanifest">
@@ -38,8 +44,8 @@
 </div>
     </div>
     <div class="selector-container">
-      <div id="theme-selector">
-        <li class="nav-item dropdown" id="theme-button-list">
+      <menu class="theme-selector" id="theme-selector-menu">
+<li class="nav-item dropdown theme-button-list" id="theme-button-list-menu">
           <button class="btn btn-link nav-link px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
             <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg><i data-feather="chevron-down"></i>
           </button>
@@ -64,10 +70,8 @@
             </li>
           </ul>
 </li>
-      </div>
-
-
-      <div class="dropdown" id="instructor-dropdown">
+    </menu>
+<div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Learner View <i data-feather="chevron-down"></i>
         </button>
@@ -133,29 +137,18 @@
     <a id="search-button" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div>
 <!--/div.container-fluid -->
-</nav><div class="col-md-12 mobile-title">
-  Introduction to R, databases and reproducibility for AMR Epidemiologists
-</div>
-
-<aside class="col-md-12 lesson-progress"><div style="width: %" class="percentage">
-    %
-  </div>
-  <div class="progress software">
-    <div class="progress-bar software" role="progressbar" style="width: %" aria-valuenow="" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
-    </div>
-  </div>
-</aside><div class="container">
+</nav><div class="container">
       <div class="row">
         <!-- START: inst/pkgdown/templates/navbar.html -->
 <div id="sidebar-col" class="col-lg-4">
   <div id="sidebar" class="sidebar">
-      <nav aria-labelledby="flush-headingEleven"><button role="button" aria-label="close menu" alt="close menu" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
+      <nav aria-labelledby="flush-collapse-chapters-toggle"><button role="button" aria-label="Collapse" alt="Collapse" aria-expanded="true" aria-controls="sidebar" class="collapse-toggle" data-collapse="Collapse " data-episodes="Episodes ">
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
           <div class="row mobile-row" id="theme-row-mobile">
-            <div class="col" id="theme-selector">
-              <li class="nav-item dropdown" id="theme-button-list">
+            <menu class="col theme-selector" id="theme-selector-sidebar">
+<li class="nav-item dropdown theme-button-list" id="theme-button-list-sidebar">
                 <button class="btn btn-link nav-link px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
                   <svg class="bi my-1 theme-icon-active"><use href="#circle-half"></use></svg><span class="d-lg-none ms-1" id="bd-theme-text">Toggle Theme</span>
                 </button>
@@ -180,19 +173,19 @@
                   </li>
                 </ul>
 </li>
-            </div>
-          </div>
+            </menu>
+</div>
           <div class="row mobile-row">
             <div class="col">
               <div class="sidenav-view-selector">
-                <div class="accordion accordion-flush" id="accordionFlush9">
+                <div class="accordion accordion-flush" id="accordion-instructor-toggle">
                   <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingNine">
-                      <button class="accordion-button collapsed" id="instructor" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
+                    <h2 class="accordion-header" id="flush-heading-instructor-toggle">
+                      <button class="accordion-button collapsed" id="instructor" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-instructor-toggle" aria-expanded="false" aria-controls="flush-collapse-instructor-toggle">
                         <i id="eye" aria-hidden="true" class="icon" data-feather="eye"></i> Learner View
                       </button>
                     </h2>
-                    <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlush2">
+                    <div id="flush-collapse-instructor-toggle" class="accordion-collapse collapse" data-bs-parent="#accordion-instructor-toggle">
                       <div class="accordion-body">
                         <a href="instructor/aio.html">Instructor View</a>
                       </div>
@@ -210,15 +203,15 @@
 </div>
 <!--/div.mobile-row -->
 
-          <div class="accordion accordion-flush" id="accordionFlush11">
+          <div class="accordion accordion-flush" id="accordion-chapters-toggle">
             <div class="accordion-item">
 
-              <button id="chapters" class="accordion-button show" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseEleven">
-                <h2 class="accordion-header chapters" id="flush-headingEleven">
+              <button id="chapters" class="accordion-button show" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-chapters-toggle" aria-expanded="false" aria-controls="flush-collapse-chapters-toggle">
+                <h2 class="accordion-header chapters" id="flush-heading-chapters-toggle">
                   EPISODES
                 </h2>
               </button>
-              <div id="flush-collapseEleven" class="accordion-collapse show collapse" aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlush11">
+              <div id="flush-collapse-chapters-toggle" class="accordion-collapse show collapse" data-bs-parent="#accordion-chapters-toggle">
 
                 <div class="accordion-body">
                   <div class="accordion accordion-flush" id="accordionFlush1">
@@ -610,14 +603,14 @@
             </div>
 
             <hr class="half-width">
-<div class="accordion accordion-flush lesson-resources" id="accordionFlush12">
+<div class="accordion accordion-flush lesson-resources" id="accordion-resources-toggle">
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwelve">
-                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                <h2 class="accordion-header" id="flush-heading-resources-toggle">
+                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-resources-toggle" aria-expanded="false" aria-controls="flush-collapse-resources-toggle">
                     RESOURCES
                   </button>
                 </h2>
-                <div id="flush-collapseTwelve" class="accordion-collapse collapse" aria-labelledby="flush-headingTwelve" data-bs-parent="#accordionFlush12">
+                <div id="flush-collapse-resources-toggle" class="accordion-collapse collapse" data-bs-parent="#accordion-resources-toggle">
                   <div class="accordion-body">
                     <ul>
 <li>
@@ -658,7 +651,7 @@
         <!-- START: inst/pkgdown/templates/content-extra.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <main id="main-content" class="main-content"><div class="container lesson-content">
-        
+        <h1>All in One View</h1>
         
 <section id="aio-01-rstudio-intro"><p>Content from <a href="01-rstudio-intro.html">Introduction to R and RStudio</a></p>
 <hr>
@@ -862,7 +855,7 @@ behavior from bash.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">+</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">+</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1239,14 +1232,14 @@ used in the community. So the recommendation is to use
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>min_height</span>
-<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>max.height</span>
-<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>_age</span>
-<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>.mass</span>
-<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a>MaxLength</span>
-<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a>min<span class="sc">-</span>length</span>
-<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a><span class="dv">2</span>widths</span>
-<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a>celsius2kelvin</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1" aria-label="code-block-43-1"></a>min_height</span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1" aria-label="code-block-43-2"></a>max.height</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1" aria-label="code-block-43-3"></a>_age</span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1" aria-label="code-block-43-4"></a>.mass</span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1" aria-label="code-block-43-5"></a>MaxLength</span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1" aria-label="code-block-43-6"></a>min<span class="sc">-</span>length</span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1" aria-label="code-block-43-7"></a><span class="dv">2</span>widths</span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1" aria-label="code-block-43-8"></a>celsius2kelvin</span></code></pre>
 </div>
 </div>
 </div>
@@ -1256,7 +1249,7 @@ used in the community. So the recommendation is to use
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Solution to challenge 1 </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The following can be used as R variables:</p>
 <div class="codewrapper sourceCode" id="cb44">
@@ -1279,9 +1272,9 @@ used in the community. So the recommendation is to use
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>_age</span>
-<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>min<span class="sc">-</span>length</span>
-<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a><span class="dv">2</span>widths</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1" aria-label="code-block-46-1"></a>_age</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1" aria-label="code-block-46-2"></a>min<span class="sc">-</span>length</span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1" aria-label="code-block-46-3"></a><span class="dv">2</span>widths</span></code></pre>
 </div>
 </div>
 </div>
@@ -1542,7 +1535,7 @@ following program?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Solution to challenge 2 </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1596,7 +1589,7 @@ compare mass to age. Is mass larger than age?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution to challenge 3 </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>One way of answering this question in R is to use the
 <code>&gt;</code> to set up the following:</p>
@@ -1635,7 +1628,7 @@ variables.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Solution to challenge 4 </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We can use the <code>rm</code> command to accomplish this task</p>
 <div class="codewrapper sourceCode" id="cb70">
@@ -1666,7 +1659,7 @@ variables.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Solution to challenge 5 </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>We can use the <code>install.packages()</code> command to install the
 required packages.</p>
@@ -1972,13 +1965,13 @@ questions:</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>By running these commands in the shell:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> data/gapminder_data.csv</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="fu">ls</span> <span class="at">-lh</span> data/gapminder_data.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1989,7 +1982,7 @@ questions:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> data/gapminder_data.csv</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="fu">wc</span> <span class="at">-l</span> data/gapminder_data.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2000,7 +1993,7 @@ questions:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">head</span> data/gapminder_data.csv</span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="fu">head</span> data/gapminder_data.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2613,10 +2606,10 @@ argument names and their default values.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>coat,weight,likes_string</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a>coat,weight,likes_string</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span></code></pre>
 </div>
 <div id="tip-editing-text-files-in-r" class="callout">
 <div class="callout-square">
@@ -2853,11 +2846,11 @@ file <code>data/feline-data_v2.csv</code>.</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>coat,weight,likes_string</span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
-<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span>
-<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>tabby,<span class="fl">2.3</span> or <span class="fl">2.4</span>,<span class="dv">1</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1" aria-label="code-block-29-1"></a>coat,weight,likes_string</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1" aria-label="code-block-29-2"></a>calico,<span class="fl">2.1</span>,<span class="dv">1</span></span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1" aria-label="code-block-29-3"></a>black,<span class="fl">5.0</span>,<span class="dv">0</span></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1" aria-label="code-block-29-4"></a>tabby,<span class="fl">3.2</span>,<span class="dv">1</span></span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1" aria-label="code-block-29-5"></a>tabby,<span class="fl">2.3</span> or <span class="fl">2.4</span>,<span class="dv">1</span></span></code></pre>
 </div>
 <p>Load the new cats data like before, and check what type of data we
 find in the <code>weight</code> column:</p>
@@ -5642,7 +5635,7 @@ neighbour. Did you have different strategies?</p>
   Solution to challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5837,7 +5830,7 @@ than 4 and less than 7.</p>
   Solution to challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6095,7 +6088,7 @@ work.</p>
   Solution to challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ul>
 <li>The <strong>wrong</strong> way to do this problem is
@@ -6389,7 +6382,7 @@ instead of their row and column indices.</p>
   Solution to challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>D</p>
 </div>
@@ -6539,7 +6532,7 @@ in the list.</p>
   Solution to challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb115">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6605,7 +6598,7 @@ in the list.</p>
   Solution to challenge 6
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb122">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6721,7 +6714,7 @@ changed with the third argument, <code>drop = FALSE</code>).</p>
 <div class="codewrapper sourceCode" id="cb134">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" tabindex="-1"></a>gapminder[gapminder<span class="sc">$</span>year <span class="ot">=</span> <span class="dv">1957</span>,]</span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" tabindex="-1" aria-label="code-block-134-1"></a>gapminder[gapminder<span class="sc">$</span>year <span class="ot">=</span> <span class="dv">1957</span>,]</span></code></pre>
 </div>
 <ol start="2" style="list-style-type: decimal">
 <li>Extract all columns except 1 through to 4</li>
@@ -6772,7 +6765,7 @@ and 2007</li>
   Solution to challenge 7
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>Fix each of the following common data frame subsetting errors:</p>
 <ol style="list-style-type: decimal">
@@ -6858,7 +6851,7 @@ through 23. You can do this in one or two steps.</p></li>
   Solution to challenge 8
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p><code>gapminder</code> is a data.frame so needs to be subsetted
@@ -7702,7 +7695,7 @@ sure it looks OK:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">head</span> cleaned-data/gapminder-aus.csv</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="fu">head</span> cleaned-data/gapminder-aus.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7746,7 +7739,7 @@ names.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">head</span> cleaned-data/gapminder-aus.csv</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="fu">head</span> cleaned-data/gapminder-aus.csv</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8173,13 +8166,13 @@ functions (e.g. <code>mean()</code> or <code>sd()</code>) within
 <figure><img src="fig/13-dplyr-fig3.png" alt="Diagram illustrating the use of group by and summarize together to create a new variable" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>continent mean_gdpPercap</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>     <span class="sc">&lt;</span>fctr<span class="sc">&gt;</span>          <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
-<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="dv">1</span>    Africa       <span class="fl">2193.755</span></span>
-<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a><span class="dv">2</span>  Americas       <span class="fl">7136.110</span></span>
-<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a><span class="dv">3</span>      Asia       <span class="fl">7902.150</span></span>
-<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a><span class="dv">4</span>    Europe      <span class="fl">14469.476</span></span>
-<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a><span class="dv">5</span>   Oceania      <span class="fl">18621.609</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1" aria-label="code-block-22-1"></a>continent mean_gdpPercap</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1" aria-label="code-block-22-2"></a>     <span class="sc">&lt;</span>fctr<span class="sc">&gt;</span>          <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1" aria-label="code-block-22-3"></a><span class="dv">1</span>    Africa       <span class="fl">2193.755</span></span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1" aria-label="code-block-22-4"></a><span class="dv">2</span>  Americas       <span class="fl">7136.110</span></span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1" aria-label="code-block-22-5"></a><span class="dv">3</span>      Asia       <span class="fl">7902.150</span></span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1" aria-label="code-block-22-6"></a><span class="dv">4</span>    Europe      <span class="fl">14469.476</span></span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1" aria-label="code-block-22-7"></a><span class="dv">5</span>   Oceania      <span class="fl">18621.609</span></span></code></pre>
 </div>
 <p>That allowed us to calculate the mean gdpPercap for each continent,
 but it gets even better.</p>
@@ -10601,7 +10594,7 @@ statistically significant?</p>
   Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You may choose to create a new glm:</p>
 <div class="codewrapper sourceCode" id="cb21">
@@ -11742,12 +11735,12 @@ we’re creating an <code>html</code> document.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Quarto document"</span></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"John Doe"</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="pp">---</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Quarto document"</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"John Doe"</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a><span class="pp">---</span></span></code></pre>
 </div>
 <p>You can delete any of those fields if you don’t want them included.
 The double-quotes aren’t strictly <em>necessary</em> in this case.
@@ -11777,21 +11770,21 @@ asterisks with a space between the list and other text, like this:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="an">A list:</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="ss">* </span>bold with double-asterisks</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="ss">* </span>italics with underscores</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="ss">* </span>code-type font with backticks</span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="an">A list:</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a><span class="ss">* </span>bold with double-asterisks</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a><span class="ss">* </span>italics with underscores</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a><span class="ss">* </span>code-type font with backticks</span></code></pre>
 </div>
 <p>or like this:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="an">A second list:</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ss">- </span>bold with double-asterisks</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="ss">- </span>italics with underscores</span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ss">- </span>code-type font with backticks</span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="an">A second list:</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1" aria-label="code-block-4-3"></a><span class="ss">- </span>bold with double-asterisks</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1" aria-label="code-block-4-4"></a><span class="ss">- </span>italics with underscores</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1" aria-label="code-block-4-5"></a><span class="ss">- </span>code-type font with backticks</span></code></pre>
 </div>
 <p>Each will appear as:</p>
 <ul>
@@ -11806,9 +11799,9 @@ the same number over and over if you want:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ss">1. </span>bold with double-asterisks</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="ss">1. </span>italics with underscores</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="ss">1. </span>code-type font with backticks</span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ss">1. </span>bold with double-asterisks</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a><span class="ss">1. </span>italics with underscores</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1" aria-label="code-block-5-3"></a><span class="ss">1. </span>code-type font with backticks</span></code></pre>
 </div>
 <p>This will appear as:</p>
 <ol style="list-style-type: decimal">
@@ -11821,13 +11814,13 @@ with some number of <code>#</code> symbols:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu"># Title</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">## Main section</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="fu">### Sub-section</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">#### Sub-sub section</span></span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="fu"># Title</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a><span class="fu">## Main section</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1" aria-label="code-block-6-5"></a><span class="fu">### Sub-section</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1" aria-label="code-block-6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1" aria-label="code-block-6-7"></a><span class="fu">#### Sub-sub section</span></span></code></pre>
 </div>
 <p>You <em>compile</em> the R Markdown document to an html webpage by
 clicking the “Render” button in the upper-left. Or using the keyboard
@@ -11856,7 +11849,7 @@ sections, some italicized text, and an itemized list).</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In RStudio, select
 <code>File &gt; New file &gt; Quarto Document...</code></p>
@@ -11864,15 +11857,15 @@ sections, some italicized text, and an itemized list).</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu"># Introduction</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">## Background on R package</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>This report uses the **AMR R package** to carry out standardised and reproducible Antimicrobial Resistance (AMR) data analysis.</span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fu">## Background on the AMR example data set</span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>The AMR package contains a data set called **example_isolates_unclean** which is representative of data extracted directly from microbiology testing laboratories. </span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a><span class="fu">## Background on R package</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1" aria-label="code-block-7-5"></a>This report uses the **AMR R package** to carry out standardised and reproducible Antimicrobial Resistance (AMR) data analysis.</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1" aria-label="code-block-7-6"></a></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1" aria-label="code-block-7-7"></a><span class="fu">## Background on the AMR example data set</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1" aria-label="code-block-7-8"></a></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1" aria-label="code-block-7-9"></a>The AMR package contains a data set called **example_isolates_unclean** which is representative of data extracted directly from microbiology testing laboratories. </span></code></pre>
 </div>
 <p>Then click the ‘Render’ button on the toolbar to generate an html
 document (webpage).</p>
@@ -11932,7 +11925,7 @@ quickly in RStudio using the shortcuts
   Code chunk options in R Markdown
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>In R Markdown, you add chunk labels by including them within the
 <code>```{r}</code> line like so:</p>
@@ -11980,7 +11973,7 @@ set:</li>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The <code>as.mo()</code> function in AMR can transform arbitrary
 microorganism names or codes to current taxonomy codes, this function
@@ -12076,17 +12069,17 @@ files YAML header like so:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="co">...</span></span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="co">knitr:</span></span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="co">  opts_chunk:</span></span>
-<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="co">    message: false</span></span>
-<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a><span class="co">    warning: false</span></span>
-<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a><span class="co">    echo: false</span></span>
-<span id="cb25-8"><a href="#cb25-8" tabindex="-1"></a><span class="co">    results: "hide"</span></span>
-<span id="cb25-9"><a href="#cb25-9" tabindex="-1"></a><span class="co">    fig.path: "Figs/"</span></span>
-<span id="cb25-10"><a href="#cb25-10" tabindex="-1"></a><span class="co">    fig.width: 11</span></span>
-<span id="cb25-11"><a href="#cb25-11" tabindex="-1"></a><span class="co">---</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb25-1"><a href="#cb25-1" tabindex="-1" aria-label="code-block-25-1"></a><span class="pp">---</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1" aria-label="code-block-25-2"></a><span class="co">...</span></span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1" aria-label="code-block-25-3"></a><span class="co">knitr:</span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1" aria-label="code-block-25-4"></a><span class="co">  opts_chunk:</span></span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1" aria-label="code-block-25-5"></a><span class="co">    message: false</span></span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1" aria-label="code-block-25-6"></a><span class="co">    warning: false</span></span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1" aria-label="code-block-25-7"></a><span class="co">    echo: false</span></span>
+<span id="cb25-8"><a href="#cb25-8" tabindex="-1" aria-label="code-block-25-8"></a><span class="co">    results: "hide"</span></span>
+<span id="cb25-9"><a href="#cb25-9" tabindex="-1" aria-label="code-block-25-9"></a><span class="co">    fig.path: "Figs/"</span></span>
+<span id="cb25-10"><a href="#cb25-10" tabindex="-1" aria-label="code-block-25-10"></a><span class="co">    fig.width: 11</span></span>
+<span id="cb25-11"><a href="#cb25-11" tabindex="-1" aria-label="code-block-25-11"></a><span class="co">---</span></span></code></pre>
 </div>
 <p>The <code>figures</code> block option defines the path where the
 figures will be saved. The <code>/</code> after Figs here is really
@@ -12125,7 +12118,7 @@ columns in our data using dplyr:</p>
   Solution to Challenge 3
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <pre><code># Cleaning antibiotic lab test results
 ```{r}
@@ -12176,7 +12169,7 @@ isolate-based. </li>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <pre><code># Data inclusion - first isolates
 ```{r}
@@ -12224,7 +12217,7 @@ get the number of unique values per column.</li>
   Solution to Challenge 5
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Use of the <code>summary()</code> and <code>sapply</code>
 functions:</p>
@@ -12296,7 +12289,7 @@ resistance proportions by antibiotic and grouped by bacteria.</li>
   Solution to Challenge 6
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>The proportion of isolates that are resistant to amoxicillin for each
 hospital:</p>
@@ -12385,14 +12378,14 @@ resistance distribution for Ciprofloxacin, we would do as follows:</p>
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Data analysis with AMR package"</span></span>
-<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span>
-<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a><span class="at">  </span><span class="fu">antibiotic</span><span class="kw">:</span><span class="at"> </span><span class="st">"CIP"</span></span>
-<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a><span class="pp">---</span></span></code></pre>
+<pre class="sourceCode yaml" tabindex="0"><code class="sourceCode yaml"><span id="cb38-1"><a href="#cb38-1" tabindex="-1" aria-label="code-block-38-1"></a><span class="pp">---</span></span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1" aria-label="code-block-38-2"></a><span class="pp">---</span></span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1" aria-label="code-block-38-3"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Data analysis with AMR package"</span></span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1" aria-label="code-block-38-4"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1" aria-label="code-block-38-5"></a><span class="fu">editor</span><span class="kw">:</span><span class="at"> visual</span></span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1" aria-label="code-block-38-6"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1" aria-label="code-block-38-7"></a><span class="at">  </span><span class="fu">antibiotic</span><span class="kw">:</span><span class="at"> </span><span class="st">"CIP"</span></span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1" aria-label="code-block-38-8"></a><span class="pp">---</span></span></code></pre>
 </div>
 <p>We can then reference this parameter anywhere in the R code in our
 report by accessing the <code>params</code> object. To visualise the
@@ -12428,7 +12421,7 @@ AMR_data_clean_1st %&gt;%
   Solution to Challenge 7
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <pre><code>```{r}
 AMR_data_clean_1st %&gt;%
@@ -12550,7 +12543,7 @@ antibiotic</p>
   Solution to Challenge 8
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <pre><code>
 ```{r}
@@ -13249,7 +13242,7 @@ changes?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ul>
 <li><p>Recovering the excellent version is only possible if you created
@@ -13338,8 +13331,8 @@ how Alfredo sets up his new laptop:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Alfredo Linguini"</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"a.linguini@ratatouille.fr"</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Alfredo Linguini"</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"a.linguini@ratatouille.fr"</span></span></code></pre>
 </div>
 <p>Please use your own name and email address instead of Alfredo’s. This
 user name and email will be associated with your subsequent Git
@@ -13388,13 +13381,13 @@ following settings are recommended:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf input</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf input</span></code></pre>
 </div>
 <p>And on Windows:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf true</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">$</span> git config <span class="at">--global</span> core.autocrlf true</span></code></pre>
 </div>
 </div>
 </div>
@@ -13499,7 +13492,7 @@ he will eventually use.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> init.defaultBranch main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">$</span> git config <span class="at">--global</span> init.defaultBranch main</span></code></pre>
 </div>
 <div id="default-git-branch-naming" class="callout">
 <div class="callout-square">
@@ -13539,7 +13532,7 @@ right away:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--edit</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--edit</span></span></code></pre>
 </div>
 <p>Let’s close the file without making any additional changes. Remember,
 since typos in the config file will cause issues, it’s safer to view the
@@ -13547,7 +13540,7 @@ configuration with:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--list</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">$</span> git config <span class="at">--list</span></span></code></pre>
 </div>
 <p>And if necessary, change your configuration using the same commands
 to choose another editor or update your email address. This can be done
@@ -13565,15 +13558,15 @@ the case, you may also need to tell Git about the proxy:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> http.proxy proxy-url</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> https.proxy proxy-url</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">$</span> git config <span class="at">--global</span> http.proxy proxy-url</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">$</span> git config <span class="at">--global</span> https.proxy proxy-url</span></code></pre>
 </div>
 <p>To disable the proxy, use</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code></pre>
 </div>
 </div>
 </div>
@@ -13593,8 +13586,8 @@ Git manual by typing <code>git &lt;command&gt; --help</code>, e.g.:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">-h</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--help</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">$</span> git config <span class="at">-h</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="ex">$</span> git config <span class="at">--help</span></span></code></pre>
 </div>
 <p>While viewing the manual, remember the <code>:</code> is a prompt
 waiting for commands and you can press <kbd>Q</kbd> to exit the
@@ -13604,7 +13597,7 @@ commands and further resources of the Git manual typing:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> git help</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">$</span> git help</span></code></pre>
 </div>
 </div>
 </div>
@@ -13752,7 +13745,7 @@ contents of our ‘amr-data-dictionary’ directory:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> ls</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">$</span> ls</span></code></pre>
 </div>
 <p>This shows the same as our GUI file viewer. But if we add the
 <code>-a</code> flag to show everything, we can see that Git has created
@@ -13761,7 +13754,7 @@ a hidden directory within <code>amr-data-dictionary</code> called
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">$</span> ls <span class="at">-a</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -13810,7 +13803,7 @@ to understand what is going on.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">$</span> git status</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -13849,13 +13842,13 @@ commands:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> cd ~/Desktop    <span class="co"># return to Desktop directory</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">$</span> cd amr-data-dictionary      <span class="co"># go into amr-data-dictionary directory, which is already a Git repository</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span>           <span class="co"># ensure the .git subdirectory is still present in the amr-data-dictionary directory</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="ex">$</span> mkdir antibiotics <span class="co"># make a sub-directory amr-data-dictionary/antibiotics</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="ex">$</span> cd antibiotics    <span class="co"># go into antibiotics subdirectory</span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="ex">$</span> git init        <span class="co"># make the antibiotics subdirectory a Git repository</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span>           <span class="co"># ensure the .git subdirectory is present indicating we have created a new Git repository</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">$</span> cd ~/Desktop    <span class="co"># return to Desktop directory</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">$</span> cd amr-data-dictionary      <span class="co"># go into amr-data-dictionary directory, which is already a Git repository</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a><span class="ex">$</span> ls <span class="at">-a</span>           <span class="co"># ensure the .git subdirectory is still present in the amr-data-dictionary directory</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a><span class="ex">$</span> mkdir antibiotics <span class="co"># make a sub-directory amr-data-dictionary/antibiotics</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1" aria-label="code-block-7-5"></a><span class="ex">$</span> cd antibiotics    <span class="co"># go into antibiotics subdirectory</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1" aria-label="code-block-7-6"></a><span class="ex">$</span> git init        <span class="co"># make the antibiotics subdirectory a Git repository</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1" aria-label="code-block-7-7"></a><span class="ex">$</span> ls <span class="at">-a</span>           <span class="co"># ensure the .git subdirectory is present indicating we have created a new Git repository</span></span></code></pre>
 </div>
 <p>Is the <code>git init</code> command, run inside the
 <code>antibiotics</code> subdirectory, required for tracking files
@@ -13888,7 +13881,7 @@ as shown above:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">$</span> git status</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -13931,7 +13924,7 @@ Git can easily be removed like any other “ordinary” files with</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> rm filename</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">$</span> rm filename</span></code></pre>
 </div>
 <p>Similarly a directory can be removed using
 <code>rm -r dirname</code>. If the files or folder being removed in this
@@ -13949,7 +13942,7 @@ directory:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">$</span> rm <span class="at">-rf</span> antibiotics/.git</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">$</span> rm <span class="at">-rf</span> antibiotics/.git</span></code></pre>
 </div>
 <p>But be careful! Running this command in the wrong directory will
 remove the entire Git history of a project you might want to keep. In
@@ -14290,7 +14283,7 @@ the last commit made to <code>index.qmd</code>?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Answer 1 is not descriptive enough, and the purpose of the commit is
 unclear; and answer 2 is redundant to using “git diff” to see what
@@ -14385,7 +14378,7 @@ dropdown we would enter:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">$</span> git diff HEAD index.qmd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14412,7 +14405,7 @@ to refer to the commit one before <code>HEAD</code>.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~1 index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">$</span> git diff HEAD~1 index.qmd</span></code></pre>
 </div>
 <p>If we want to see the differences between older commits we can use
 <code>git diff</code> again, but with the notation <code>HEAD~1</code>,
@@ -14420,7 +14413,7 @@ to refer to the commit one before <code>HEAD</code>.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> git diff HEAD~2 index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">$</span> git diff HEAD~2 index.qmd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14455,7 +14448,7 @@ we see by using <code>git diff</code>.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">$</span> git show HEAD~2 index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">$</span> git show HEAD~2 index.qmd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14501,7 +14494,7 @@ this:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> git diff a639e379c5a198322add586e73414856369abddc index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">$</span> git diff a639e379c5a198322add586e73414856369abddc index.qmd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14536,7 +14529,7 @@ seven for normal size projects):</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> git diff a639e37 index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">$</span> git diff a639e37 index.qmd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14595,12 +14588,12 @@ use a commit identifier, using <code>-s</code> option:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">$</span> git restore <span class="at">-s</span> 9db51425 index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">$</span> git restore <span class="at">-s</span> 9db51425 index.qmd</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">$</span> cat index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">$</span> cat index.qmd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14631,7 +14624,7 @@ To learn more about Quarto websites visit &lt;https://quarto.org/docs/websites&g
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">$</span> git status</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14660,8 +14653,8 @@ overwrite the working copy with the last committed version:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">$</span> git restore index.qmd</span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="ex">$</span> cat index.qmd</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">$</span> git restore index.qmd</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1" aria-label="code-block-17-2"></a><span class="ex">$</span> cat index.qmd</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14849,7 +14842,7 @@ let us know that we have chosen not to track the file:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">git</span> add phd101212s.png</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="fu">git</span> add phd101212s.png</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14884,7 +14877,7 @@ directory is not version controlled.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Solution to Challenge </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>This can be done in Rstudio:</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -14912,8 +14905,8 @@ ignore.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">analysis/data</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">analysis/plots</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">analysis/data</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">analysis/plots</span></span></code></pre>
 </div>
 <p>How would you ignore only <code>analysis/plots</code> and not
 <code>analysis/data</code>?</p>
@@ -14925,7 +14918,7 @@ ignore.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>If you only want to ignore the contents of
 <code>analysis/plots</code>, you can change your <code>.gitignore</code>
@@ -14967,7 +14960,7 @@ directory except for <code>final.png</code>? Hint: Find out what
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>You would add the following two lines to your .gitignore:</p>
 <div class="codewrapper">
@@ -14999,11 +14992,11 @@ structure that looks like:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">receipts/data/market_position/gps/a.dat</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">receipts/data/market_position/gps/b.dat</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="ex">receipts/data/market_position/gps/c.dat</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="ex">receipts/data/market_position/gps/info.txt</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="ex">receipts/plots</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">receipts/data/market_position/gps/a.dat</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="ex">receipts/data/market_position/gps/b.dat</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a><span class="ex">receipts/data/market_position/gps/c.dat</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a><span class="ex">receipts/data/market_position/gps/info.txt</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1" aria-label="code-block-7-5"></a><span class="ex">receipts/plots</span></span></code></pre>
 </div>
 <p>What’s the shortest <code>.gitignore</code> rule you could write to
 ignore all <code>.dat</code> files in
@@ -15017,7 +15010,7 @@ ignore all <code>.dat</code> files in
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Appending <code>receipts/data/market_position/gps/*.dat</code> will
 match every file in <code>receipts/data/market_position/gps</code> that
@@ -15041,10 +15034,10 @@ subdirectories of your repository. For example, you might have:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">results/a.csv</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">data/experiment_1/b.csv</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="ex">data/experiment_2/c.csv</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="ex">data/experiment_2/variation_1/d.csv</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">results/a.csv</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="ex">data/experiment_1/b.csv</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1" aria-label="code-block-8-3"></a><span class="ex">data/experiment_2/c.csv</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1" aria-label="code-block-8-4"></a><span class="ex">data/experiment_2/variation_1/d.csv</span></span></code></pre>
 </div>
 <p>How do you ignore all the <code>.csv</code> files, without explicitly
 listing the names of the corresponding folders?</p>
@@ -15056,7 +15049,7 @@ listing the names of the corresponding folders?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>In the <code>.gitignore</code> file, write:</p>
 <div class="codewrapper">
@@ -15083,8 +15076,8 @@ exception with the exclamation point operator.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">*.csv</span></span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="ex">!*.csv</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">*.csv</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="ex">!*.csv</span></span></code></pre>
 </div>
 <p>What will be the result?</p>
 </div>
@@ -15095,7 +15088,7 @@ exception with the exclamation point operator.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>The <code>!</code> modifier will negate an entry from a previously
 defined ignore pattern. Because the <code>!*.csv</code> entry negates
@@ -15139,7 +15132,7 @@ via <code>.gitignore</code>.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>append either <code>log_*</code> or <code>log*</code> as a new entry
@@ -15230,9 +15223,9 @@ URL and some information on how to configure your local repository:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="ex">$</span> mkdir amr-data-dictionary</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">$</span> cd amr-data-dictionary</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">$</span> git init</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">$</span> mkdir amr-data-dictionary</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">$</span> cd amr-data-dictionary</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="ex">$</span> git init</span></code></pre>
 </div>
 <p>If you remember back to the earlier <a href="04-git-changes.html">episode</a> where we added and committed our
 earlier work on <code>index.qmd</code>, we had a diagram of the local
@@ -15256,15 +15249,15 @@ we want to use the package.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">install.packages</span><span class="er">(</span><span class="st">"usethis"</span><span class="kw">)</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="ex">library</span><span class="er">(</span><span class="ex">usethis</span><span class="kw">)</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">install.packages</span><span class="er">(</span><span class="st">"usethis"</span><span class="kw">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="ex">library</span><span class="er">(</span><span class="ex">usethis</span><span class="kw">)</span></span></code></pre>
 </div>
 <p>We can now generate our token using the following command in the
 console:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">usethis::create_github_token()</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="fu">usethis::create_github_token()</span></span></code></pre>
 </div>
 <p>We will generate our token within the GitHub interface by visiting <a href="https://github.com/settings/tokens" class="external-link">https://github.com/settings/tokens</a>.</p>
 <p>This will open the generate token page on the GitHub website.</p>
@@ -15279,7 +15272,7 @@ following:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">gitcreds::gitcreds_set()</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="fu">gitcreds::gitcreds_set()</span></span></code></pre>
 </div>
 <p>Paste the PAT in response to the dialogue in the console:</p>
 <div class="codewrapper">
@@ -15304,7 +15297,7 @@ Git tab. Checking that you are in the directory of your
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">$</span> git remote add origin https://github.com/quirksahern/amr-data-dictionary.git</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">$</span> git remote add origin https://github.com/quirksahern/amr-data-dictionary.git</span></code></pre>
 </div>
 <p>Make sure to use the URL for your repository rather than the
 instructor’s: the only difference should be your username instead of
@@ -15318,7 +15311,7 @@ helpful to stick with this unless there’s a reason not to.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> git remote <span class="at">-v</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="ex">$</span> git remote <span class="at">-v</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -15337,7 +15330,7 @@ repository on GitHub:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">$</span> git push origin main</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -15369,16 +15362,16 @@ proxy:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> http.proxy http://user:password@proxy.url</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> https.proxy https://user:password@proxy.url</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1" aria-label="code-block-11-1"></a><span class="ex">$</span> git config <span class="at">--global</span> http.proxy http://user:password@proxy.url</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1" aria-label="code-block-11-2"></a><span class="ex">$</span> git config <span class="at">--global</span> https.proxy https://user:password@proxy.url</span></code></pre>
 </div>
 <p>When you connect to another network that doesn’t use a proxy, you
 will need to tell Git to disable the proxy using:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code></pre>
 </div>
 </div>
 </div>
@@ -15407,7 +15400,7 @@ well:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1" aria-label="code-block-13-1"></a><span class="ex">$</span> git pull origin main</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -15587,7 +15580,7 @@ common origin and refuses to merge.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="ex">$</span> git pull origin main</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -15609,7 +15602,7 @@ repositories before merging.</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">$</span> git pull <span class="at">--allow-unrelated-histories</span> origin main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1" aria-label="code-block-17-1"></a><span class="ex">$</span> git pull <span class="at">--allow-unrelated-histories</span> origin main</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -16014,7 +16007,7 @@ default thing git should do.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> git config pull.rebase false</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">$</span> git config pull.rebase false</span></code></pre>
 </div>
 <p>Then attempt the pull again.</p>
 </div>
@@ -16045,8 +16038,8 @@ entirely.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">$</span> git add index.qmd</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="ex">$</span> git status</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">$</span> git add index.qmd</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1" aria-label="code-block-4-2"></a><span class="ex">$</span> git status</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -62540,7 +62533,7 @@ assumptions are met for the linear models you have created using the
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.20.0" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.20.1" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.1.0" class="external-link">varnish (1.1.0)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -62563,8 +62556,8 @@ assumptions are met for the linear models you have created using the
   "url": "https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/aio.html",
   "identifier": "https://UCL-ARC.github.io/R-AMR-Epidemiology-NI/aio.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2026-04-14",
-  "datePublished": "2026-04-14"
+  "dateModified": "2026-04-21",
+  "datePublished": "2026-04-21"
 }
 
   </script><script>
